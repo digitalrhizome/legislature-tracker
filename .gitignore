@@ -4,3 +4,4 @@ dist/templates.js
 node_modules
 .ftppass
 .sass-cache
+scss/_crap.scss
