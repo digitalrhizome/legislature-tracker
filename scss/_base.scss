@@ -1,0 +1,203 @@
+* {
+	@include box-sizing(border-box);
+}
+
+//   =ROOT   ==================================================
+html, body {
+    height: 100%;
+}
+html {
+	font-size : 100%;
+	-webkit-overflow-scrolling : touch;
+	//-webkit-tap-highlight-color : lighten($body-color, 75%);
+	-webkit-text-size-adjust : 100%;
+	-ms-text-size-adjust : 100%; 
+}
+body {
+	//background-color : $body-bg;
+	font-family : $base-font;
+	@include rem(font-size, $base-font-size);
+	line-height: $base-line-height;
+	color : $grey; 
+}
+
+
+// LINKS
+a {
+	text-decoration : none;
+	color : $link-color;
+
+	&:visited {
+		color : $link-color-visited; 
+	}
+
+	&:hover {
+		text-decoration : underline;
+		color : $link-color-hover; 
+	}
+
+	&:focus {
+		outline : thin dotted;
+		color : $link-colorfocus; 
+	}
+
+	&:hover,
+		&:active {
+		outline : 0; 
+	}
+}
+
+::-moz-selection {
+	background-color: $light-grey;
+	color: $dark-grey;
+	text-shadow: none; 
+}
+::selection {
+	background-color: $light-grey;
+	color: $dark-grey;
+	text-shadow: none; 
+}
+
+// TYPE
+
+sub, sup {
+	@include rem(font-size, 12px);
+	position: relative;
+	line-height: 1;
+	vertical-align: baseline;
+}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+//   =HEADINGS & PARAGRAPHS   =================================
+
+h1, h2, h3, h4, h5, h6, 
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a  { 
+	@include rem(margin, 0 0 16px); // later: introduce vertical rhythm based on font size
+	font-family: inherit;
+	font-weight: bold;
+	text-rendering: optimizelegibility;
+	small {
+		font-weight: normal;
+	}
+}
+
+h1, 
+h1 a {
+	font-family: adelle, sans-serif;
+	@include rem(font-size, 24px);
+	@include rem(margin-bottom, 16px); // bottom margins defined until vertical rhythm is implemented
+}
+h2, 
+h2 a {
+	@include rem(font-size, 20px);
+	@include rem(margin-bottom, 16px);
+}
+h3, 
+h3 a {
+	@include rem(font-size, 16px);
+	@include rem(margin-bottom, 16px);
+}
+h4, 
+h4 a {
+	@include rem(font-size, 16px);
+	margin-bottom: 0;
+}
+h5, 
+h5 a, h6, h6 a {
+	@include rem(font-size, 16px);
+	margin-bottom: 0;
+}
+
+p {
+	margin: 0;
+	@include rem(margin-bottom, 16px); // later: introduce vertical rhythm based on font size
+	:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+hr {
+	@include rem(margin, 16px 0);
+	border: 0;
+	border-top: 1px solid $light-grey;
+	border-bottom: 1px solid $white;
+}
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+
+figcaption {
+	@include rem(font-size, 12px);
+	font-style: italic;
+	color: $grey;
+	@include rem(padding, 4px);
+}
+
+small {
+	@include rem(font-size, 12px);
+}
+
+cite { 
+	font-style: normal; 
+}
+
+img {
+	height: auto;
+	border: 0;
+	vertical-align: middle;
+	-ms-interpolation-mode: bicubic;
+}
+
+// TABLES
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: transparent;
+}
+
+
+// HELPERS
+
+%image-replace { 
+	@include hide-text; 
+	background-repeat: no-repeat;
+}
+
+%clearfix {
+	@include clearfix;
+}
+
+%clear { 
+	clear: both; 
+}
+
+%ellipsis {
+	@include ellipsis;
+	height: 1.4em;
+}
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+.hidden { 
+	display : none !important;
+	visibility : hidden;
+}
+
+// Hide only visually: h5bp.com/v
+.visuallyhidden { 
+	@include visuallyhidden;
+}
+
+// Hide visually and from screenreaders, but maintain layout
+.invisible { 
+	visibility: hidden; 
+}
+
+@include respond-min(767px) {
+	body {
+		@include rem(font-size, 14px);
+	}
+}

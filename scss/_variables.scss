@@ -1,0 +1,76 @@
+$namespace: ls;
+
+// Color Palette
+////////////////////////////
+
+// grayscale
+////////////////////////////
+
+$black 			: #111 !default; 
+$dark-grey 		: #222 !default;
+$grey 			: #555 !default;
+$light-grey 	: #969696 !default;
+$lighter-grey 	: #eee !default;
+$white 			: #f8f8f8 !default;
+
+// colorway
+////////////////////////////
+
+$primary-color		: #00d4da !default;
+$secondary-color	: #c00 !default;
+
+// Iconset
+////////////////////////////
+$icon-set		: url() !default;
+
+////////////////////////////
+// Global Elements
+////////////////////////////
+
+// type
+////////////////////////////
+
+$base-font 					: "Helvetica Neue", Arial, sans-serif !default;
+$font-serif 				: Georgia, "Times New Roman", serif !default;
+$font-script 				: "" !default;
+$base-font-size 			: 16 !default;
+$base-line-height 			: 1.5 !default;
+
+// Links
+$link-color 		    : $primary-color !default;
+$link-color-hover 		: darken($link-color, 5) !default;
+$link-color-visited   	: lighten($link-color-hover, 10) !default;
+$link-colorfocus 		: darken($link-color-visited, 10) !default;
+$link-padding 			: 0.5em !default;
+
+// layout
+////////////////////////////
+$unit 			: $base-font-size !default;
+$unit-half 		: $base-font-size / 2 !default;
+$unit-quarter	: $base-font-size / 4 !default;
+
+// border
+$border-width: 1px !default;
+$border-style: solid !default;
+$border-color: $lighter-grey !default;
+
+////////////////////////////
+// Compass overrides
+////////////////////////////
+
+$default-border-radius	: 3px !default;
+
+// shadows (compass CSS3)
+////////////////////////////
+
+$default-box-shadow-color		: rgba(0, 0, 0, 0.3);
+$default-box-shadow-h-offset	: 1px;
+$default-box-shadow-v-offset	: 1px;
+$default-box-shadow-blur		: 6px;
+$default-box-shadow-spread		: false;
+$default-box-shadow-inset		: false;
+
+$box-shadow   : $default-box-shadow-h-offset
+				$default-box-shadow-v-offset
+				$default-box-shadow-blur
+				$default-box-shadow-color;
