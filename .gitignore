@@ -1,4 +1,6 @@
+.DS_Store
 !dist
 dist/templates.js
 node_modules
 .ftppass
+.sass-cache
