@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       },
       templates: {
         src: ['js/app/templates/*.html'],
-        dest: 'dist/templates.js'
+        dest: 'dist/js/templates.js'
       }
     },
     concat: {
@@ -42,15 +42,15 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['js/app/utils.js', 'js/app/core.js', 'dist/templates.js', 'js/app/models.js', 'js/app/collections.js', 'js/app/views.js', 'js/app/app.js'],
-        dest: 'dist/<%= pkg.name %>.<%= pkg.version %>.js'
+        dest: 'dist/js/<%= pkg.name %>.<%= pkg.version %>.js'
       },
       dist_latest: {
         src: ['<%= concat.dist.src %>'],
-        dest: 'dist/<%= pkg.name %>.latest.js'
+        dest: 'dist/js/<%= pkg.name %>.latest.js'
       },
       libs: {
         src: ['js/lib/underscore.1.4.3.min.js', 'js/lib/jquery.1.8.3.min.js', 'js/lib/jquery.jsonp-2.4.0.min.js', 'js/lib/jquery.qtip.master-20130221.min.js', 'js/lib/backbone.0.9.10.min.js', 'js/lib/tabletop-zzolo.master-20130402.min.js', 'js/lib/moment.2.0.0.min.js'],
-        dest: 'dist/<%= pkg.name %>.libs.js',
+        dest: 'dist/js/<%= pkg.name %>.libs.js',
         options: {
           separator: ';\r\n\r\n'
         }
@@ -62,30 +62,30 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['<%= concat.dist.dest %>'],
-        dest: 'dist/<%= pkg.name %>.<%= pkg.version %>.min.js'
+        dest: 'dist/js/<%= pkg.name %>.<%= pkg.version %>.min.js'
       },
       dist_latest: {
         src: ['<%= concat.dist_latest.dest %>'],
-        dest: 'dist/<%= pkg.name %>.latest.min.js'
+        dest: 'dist/js/<%= pkg.name %>.latest.min.js'
       }
     },
     copy: {
       dist: {
         files: {
-          'dist/<%= pkg.name %>.<%= pkg.version %>.css': 'css/style.css',
-          'dist/<%= pkg.name %>.<%= pkg.version %>.ie.css': 'css/style.ie.css'
+          'dist/css/<%= pkg.name %>.<%= pkg.version %>.css': 'css/all.css',
+          'dist/css/<%= pkg.name %>.<%= pkg.version %>.ie.css': 'css/style.ie.css'
         }
       },
       dist_latest: {
         files: {
-          'dist/<%= pkg.name %>.latest.css': 'css/style.css',
-          'dist/<%= pkg.name %>.latest.ie.css': 'css/style.ie.css'
+          'dist/css/<%= pkg.name %>.latest.css': 'css/all.css',
+          'dist/css/<%= pkg.name %>.latest.ie.css': 'css/style.ie.css'
         }
       },
       images: {
         files: [
           {
-            cwd: './css/images/',
+            cwd: './images/',
             expand: true,
             filter: 'isFile',
             src: ['*'],
