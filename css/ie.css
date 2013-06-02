@@ -5,6 +5,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
 audio, canvas, video {
   display: inline-block;
+  display: inline;
+  zoom: 1;
 }
 
 audio:not([controls]) {
@@ -177,12 +179,14 @@ legend {
   border: 0;
   padding: 0;
   white-space: normal;
+  margin-left: -7px;
 }
 
 button, input, select, textarea {
   font-size: 100%;
   margin: 0;
   vertical-align: baseline;
+  vertical-align: middle;
 }
 
 button, input {
@@ -192,6 +196,7 @@ button, input {
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+  overflow: visible;
 }
 
 button[disabled], input[disabled] {
@@ -201,6 +206,8 @@ button[disabled], input[disabled] {
 input[type="checkbox"], input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
+  height: 13px;
+  width: 13px;
 }
 
 input[type="search"] {
@@ -248,6 +255,7 @@ html {
 
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
   color: #555555;
@@ -285,6 +293,7 @@ a:hover, a:active {
 }
 
 sub, sup {
+  font-size: 12px;
   font-size: 0.75rem;
   position: relative;
   line-height: 1;
@@ -301,6 +310,7 @@ sub {
 
 h1, h2, h3, h4, h5, h6,
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  margin: 0 0 16px;
   margin: 0 0 1rem;
   font-family: inherit;
   font-weight: bold;
@@ -314,36 +324,45 @@ h1 a small, h2 a small, h3 a small, h4 a small, h5 a small, h6 a small {
 h1,
 h1 a {
   font-family: adelle, sans-serif;
+  font-size: 24px;
   font-size: 1.5rem;
+  margin-bottom: 16px;
   margin-bottom: 1rem;
 }
 
 h2,
 h2 a {
+  font-size: 20px;
   font-size: 1.25rem;
+  margin-bottom: 16px;
   margin-bottom: 1rem;
 }
 
 h3,
 h3 a {
+  font-size: 16px;
   font-size: 1rem;
+  margin-bottom: 16px;
   margin-bottom: 1rem;
 }
 
 h4,
 h4 a {
+  font-size: 16px;
   font-size: 1rem;
   margin-bottom: 0;
 }
 
 h5,
 h5 a, h6, h6 a {
+  font-size: 16px;
   font-size: 1rem;
   margin-bottom: 0;
 }
 
 p {
   margin: 0;
+  margin-bottom: 16px;
   margin-bottom: 1rem;
 }
 p :last-of-type {
@@ -351,6 +370,7 @@ p :last-of-type {
 }
 
 hr {
+  margin: 16px 0;
   margin: 1rem 0;
   border: 0;
   border-top: 1px solid #969696;
@@ -366,13 +386,16 @@ em {
 }
 
 figcaption {
+  font-size: 12px;
   font-size: 0.75rem;
   font-style: italic;
   color: #555555;
+  padding: 4px;
   padding: 0.25rem;
 }
 
 small {
+  font-size: 12px;
   font-size: 0.75rem;
 }
 
@@ -422,11 +445,11 @@ table {
   visibility: hidden;
 }
 
-@media screen and (min-width: 767px) {
-  body {
-    font-size: 0.875rem;
-  }
+body {
+  font-size: 14px;
+  font-size: 0.875rem;
 }
+
 a.permalink {
   font-size: .5em;
   background: transparent url("images/link-16x8-black.png") center right no-repeat;
@@ -435,6 +458,8 @@ a.permalink {
   display: -moz-inline-stack;
   display: inline-block;
   margin-left: .5em;
+  zoom: 1;
+  display: inline;
 }
 
 .number {
@@ -496,6 +521,8 @@ a.permalink {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: top;
+  zoom: 1;
+  display: inline;
 }
 
 h2 .category-image {
@@ -753,6 +780,8 @@ ul.e-links-list li {
   opacity: .85;
   filter: alpha(opacity=85);
   margin: 0 auto;
+  display: block;
+  zoom: 1;
   display: block;
 }
 .category-list .category-image:hover {

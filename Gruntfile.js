@@ -73,13 +73,13 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/css/<%= pkg.name %>.<%= pkg.version %>.css': 'css/all.css',
-          'dist/css/<%= pkg.name %>.<%= pkg.version %>.ie.css': 'css/style.ie.css'
+          'dist/css/<%= pkg.name %>.<%= pkg.version %>.ie.css': 'css/ie.css'
         }
       },
       dist_latest: {
         files: {
           'dist/css/<%= pkg.name %>.latest.css': 'css/all.css',
-          'dist/css/<%= pkg.name %>.latest.ie.css': 'css/style.ie.css'
+          'dist/css/<%= pkg.name %>.latest.ie.css': 'css/ie.css'
         }
       },
       images: {
