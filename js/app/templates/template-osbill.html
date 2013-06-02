@@ -35,24 +35,24 @@
   <div class="actions">
     <h5><span class="latest-action-label">Latest </span>Actions</h5>
     
-    <div class="actions-inner">
+    <ul class="actions-inner">
       <% _.each(bill.actions, function(a) { %>
         <% if (a.date) { %>
-          <div>
+          <li>
             <%= a.date.format('MMM DD, YYYY') %>:  
             <%= a.action %>
             (<%= LT.utils.translate('chamber', a.actor) %>)
-          </div>
+          </li>
         <% } %> 
       <% }) %>
-    </div>
+    </ul>
   </div>
 
   <% if (bill.sponsors.length > 1) { %>
-    <div class="sponsors co-sponsors clear-block">
+    <ul class="sponsors co-sponsors clear-block">
       <h5>Co-Sponsors</h5>
       
-      <div class="co-sponsors-inner clear-block">
+      <li class="co-sponsors-inner clear-block">
         <% _.each(bill.sponsors, function(s) { %>
           <% if (s.type !== 'primary') { %>
             <div class="sponsor" data-leg-id="<%= s.leg_id %>" data-sponsor-type="<%= s.type %>">
@@ -60,8 +60,8 @@
             </div>
           <% } %>
         <% }) %>
-      </div>
-    </div>
+      </li>
+    </ul>
   <% } %>
 
   <% if (_.isArray(bill.votes) && bill.votes.length > 0) { %>
