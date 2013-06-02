@@ -18,10 +18,9 @@
     </div>
   <% } %>
 
-  <ul class="category-list clear-block">
+  <ul class="category-list">
     <% _.each(categories, function(c, i) { %>
-      <li class="category-item category-item-<%= i %>">
-        <div class="category-inner category-<%= _.cssClass(c.id) %>">
+      <li class="category-<%= _.cssClass(c.id) %>">
           <% if (c.image) { %>
             <a href="#/category/<%= encodeURI(c.id) %>">
               <img class="category-image" src="<%= LT.utils.imagePath(c.image) %>" />
@@ -42,7 +41,6 @@
             <% } %>
             bills.
           </div>
-        </div>
       </li>
     <% }) %>
   </ul>
