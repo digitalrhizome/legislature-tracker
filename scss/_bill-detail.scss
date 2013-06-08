@@ -18,6 +18,9 @@
 .bill-summary {
 	float: left;
 	width: 70%;
+	h2, h3 {
+		font-family: $font-fancy;
+	}
 }
 
 // Status Indicators
