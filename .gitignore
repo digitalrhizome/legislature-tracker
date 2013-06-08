@@ -1,0 +1,12 @@
+.DS_Store
+!dist
+dist/templates.js
+node_modules
+.ftppass
+.sass-cache
+scss/_crap.scss
+scss
+Gruntfile.js
+package.json
+README.md
+config.rb

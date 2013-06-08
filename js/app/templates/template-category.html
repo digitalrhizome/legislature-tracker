@@ -1,0 +1,47 @@
+<%= header %>
+
+<div class="category-container">
+
+	<header>
+		<% if (category.image) { %>
+		<img class="category-image" src="<%= LT.utils.imagePath(category.image) %>" />
+		<% } %>
+
+		<section class="category-meta">
+			<h2><%= category.title %></h2>
+			<% if (category.description) { %>
+			<p><%= category.description %></p>
+			<% } %>
+		</section>
+
+		<p class="category-bill-total">
+			Watching 
+			<strong><%= category.bills.length %></strong>
+			<% if (typeof category.total_bill_count != 'undefined') { %>
+				of <%= category.total_bill_count %>
+			<% } %>
+			bills in the <%= category.title %> category.
+		</p>
+
+	</header>
+	
+	<% if (_.isArray(category.links) && category.links.length > 0) { %>
+		<nav class="category-news">
+			<h4>In the news</h4>
+			<% _.each(category.links, function(l) { %>
+				<a href="<%= l.url %>"><%= l.title %></a>
+			<% }) %>
+		</nav>
+	<% } %>
+	
+	<section class="bills-list">
+		<% category.bills.each(function(b) { %>
+			<%= templates.ebill({
+				bill: b.toJSON(),
+				expandable: true,
+				templates: templates
+			}) %>
+		<% }); %>
+	</section>
+
+</div>

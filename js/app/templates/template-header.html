@@ -1,0 +1,13 @@
+<nav class="nav-categories">
+	<a class="all-categories-link" href="#/">
+		<!-- <img src="<%= LT.options.imagePath %>back-100-85.png" /> -->
+		All Categories
+	</a>
+	<span>
+		<% _.each(categories, function(c) { %>
+			<a class="" href="#/category/<%= c.id %>" title="<%= c.title %>">
+				<%= (c.short_title) ? c.short_title : c.title.split(' ')[0] %>
+			</a>
+		<% }) %>
+	</span>
+</nav>

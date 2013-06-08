@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FL Legislature Tracker</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<!-- Include CSS -->
+	<link rel="stylesheet" href="css/all.css" type="text/css">
+	<!--[if lte IE 8]>
+		<link rel="stylesheet" href="css/ie.css" type="text/css">
+	<![endif]-->
+	<script type="text/javascript" src="//use.typekit.net/yrz4mlj.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+	<style type="text/css">
+		.ls .categories-container {
+			background: none;
+		}
+	</style>
+
+	<!-- Application HTML -->
+	<div class="application-container">
+
+		<h1>FL Legislation Tracker</h1>
+		
+		<section id="legislature-tracker-container">
+		</section>
+
+	</div>
+				
+		
+	<!-- Application libraries and JS -->
+	<script type="text/javascript" src="dist/js/legislature-tracker.libs.js"></script>
+	<script type="text/javascript" src="dist/js/legislature-tracker.latest.js"></script>
+
+
+	<!-- Run application -->
+	<script type="text/javascript">
+		(function($, w, undefined) {
+			var options = _(LT.defaultOptions).extend({
+				el: '#legislature-tracker-container',
+				state: 'FL', 
+				session: '2013',
+				OSKey: '1a9d7ed2b24348a7be264c5c3dad1bbe',
+				eKey: '0AqzrZCDlzfg9dHpRYkZCRUxyYmZEYk5NaXNrM09FdVE',
+				imagePath: 'images/'
+			});
+			options['wordTranslations']['chamber']['lower'] = 'Assembly';
+
+			var app = new LT.Application(options);
+			
+		})(jQuery, window);
+	</script>
+
+</body>
+</html>
