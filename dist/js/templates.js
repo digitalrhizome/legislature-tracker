@@ -246,15 +246,15 @@ __p += '\n\t\t\t\t<div class="bill-latest-action">\n\t\t\t\t\tLast action ' +
 ((__t = ( bill.newest_action.date.fromNow() )) == null ? '' : __t) +
 '.\n\t\t\t\t</div>\n\t\t\t';
  } ;
-__p += '\n\n\t\t</aside>\n\n\t\t';
+__p += '\n\n\t\t</aside>\n\n\t</div>\n\n\t';
  if (expandable && !(!bill.hasBill && bill.description.split(' ').length < 60 && !(_.isArray(bill.links) && bill.links.length > 0))) { ;
-__p += '\n\t\t\t<a href="#" class="bill-expand">More detail</a>\n\t\t\t<a href="#/bill/' +
+__p += '\n\t\t<a href="#" class="bill-expand">More detail</a>\n\t\t<!-- <a href="#/bill/' +
 ((__t = ( encodeURI(bill.bill) )) == null ? '' : __t) +
-'" class="bill-details-link">More detail</a>\n\t\t';
+'" class="bill-details-link">More detail</a> -->\n\t';
  } ;
-__p += '\n\n\n\t</div>\n\t\n\t<div class="bill-bottom">\n\t\t';
+__p += '\n\t\n\t<div class="bill-bottom">\n\n\t\t';
  if (_.isArray(bill.links) && bill.links.length > 0) { ;
-__p += '\n\t\t\t<div class="e-links">\n\t\t\t\t<h4>In the news</h4>\n\t\t\t\t<ul class="e-links-list">\n\t\t\t\t\t';
+__p += '\n\t\t\t<div class="bill-news-links">\n\t\t\t\t<h4>In the news</h4>\n\t\t\t\t<ul>\n\t\t\t\t\t';
  _.each(bill.links, function(l) { ;
 __p += '\n\t\t\t\t\t\t<li><a href="' +
 ((__t = ( l.url )) == null ? '' : __t) +
@@ -290,11 +290,11 @@ __p += '\n\t\t\t<div class="conference-bill">\n\t\t\t\t<div class="conference-bi
 					}) )) == null ? '' : __t) +
 '\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<a class="expand-other-bills" href="#">Show other bills</a>\n\t\t';
  } ;
-__p += '\n\t\t\n\t\t<div class="';
+__p += '\n\t\t\n\t\t<div ';
  if (_.isObject(bill.bill_conference)) { ;
-__p += 'has-conference-bill';
+__p += 'class="has-conference-bill"';
  } ;
-__p += '">\n\t\t\t';
+__p += '>\n\t\t\t';
  if (_.isObject(bill.bill_primary)) { ;
 __p += '\n\t\t\t\t<div class="primary-bill ';
  if (_.isObject(bill.bill_companion)) { ;
@@ -417,119 +417,131 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 
  if (typeof detailed != 'undefined' && detailed)  { ;
-__p += '\n  ' +
+__p += '\n\t' +
 ((__t = ( header )) == null ? '' : __t) +
 '\n';
  } ;
-__p += '\n\n<div class="osbill">\n  <h4>\n    ';
+__p += '\n\n<div class="osbill">\n\t<h4>\n\t\t';
  if (typeof title != 'undefined') { ;
-__p += '\n      ' +
+__p += '\n\t\t\t' +
 ((__t = ( title )) == null ? '' : __t) +
 ' (' +
 ((__t = ( bill.bill_id )) == null ? '' : __t) +
-')\n    ';
+')\n\t\t';
  } else { ;
-__p += '\n      ' +
+__p += '\n\t\t\t' +
 ((__t = ( bill.bill_id )) == null ? '' : __t) +
-'\n    ';
+'\n\t\t';
  } ;
-__p += '\n    <a class="permalink" title="Permanent link to bill" href="#/bill-detail/' +
+__p += '\n\t\t<a class="permalink" title="Permanent link to bill" href="#/bill-detail/' +
 ((__t = ( encodeURI(bill.bill_id) )) == null ? '' : __t) +
-'"></a>\n  </h4>\n  \n  ';
+'"></a>\n\t</h4>\n\t\n\t';
  if (typeof detailed != 'undefined' && detailed) { ;
-__p += '\n    <p class="description">\n      ' +
+__p += '\n\t\t<p class="description">\n\t\t\t' +
 ((__t = ( bill.title )) == null ? '' : __t) +
-'\n    </p>\n  ';
+'\n\t\t</p>\n\t';
  } ;
-__p += '\n\n  <div class="sponsors primary-sponsors">\n    <h5>Primary sponsors</h5>\n    \n    <div>\n      ';
+__p += '\n\n\t<div class="bill-sponsors bill-sponsors-primary">\n\t\t<h5>Primary sponsors</h5>\n\t\t';
  _.each(bill.sponsors, function(s) { ;
-__p += '\n        ';
+__p += '\n\t\t\t';
  if (s.type === 'primary') { ;
-__p += '\n          <div class="sponsor" data-leg-id="' +
+__p += '\n\t\t\t\t<p class="sponsor" data-leg-id="' +
 ((__t = ( s.leg_id )) == null ? '' : __t) +
 '" data-sponsor-type="' +
 ((__t = ( s.type )) == null ? '' : __t) +
-'">\n            ' +
+'">\n\t\t\t\t\t' +
 ((__t = ( s.name )) == null ? '' : __t) +
 ' (' +
 ((__t = ( s.type )) == null ? '' : __t) +
-')\n          </div>\n        ';
+')\n\t\t\t\t</p>\n\t\t\t';
  } ;
-__p += '\n      ';
+__p += '\n\t\t';
  }) ;
-__p += '\n    </div>\n  </div>\n  \n  <div class="actions">\n    <h5><span class="latest-action-label">Latest </span>Actions</h5>\n    \n    <ul class="actions-inner">\n      ';
+__p += '\n\t</div>\n\t\n\t<div class="bill-actions">\n\t\t<h5>Latest Actions</h5>\n\t\t\n\t\t<ul>\n\t\t\t';
  _.each(bill.actions, function(a) { ;
-__p += '\n        ';
+__p += '\n\t\t\t\t';
  if (a.date) { ;
-__p += '\n          <li>\n            ' +
+__p += '\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<span class="bill-action-date">' +
 ((__t = ( a.date.format('MMM DD, YYYY') )) == null ? '' : __t) +
-':  \n            ' +
+'</span>\n\t\t\t\t\t\t' +
 ((__t = ( a.action )) == null ? '' : __t) +
-'\n            (' +
+'\n\t\t\t\t\t\t(' +
 ((__t = ( LT.utils.translate('chamber', a.actor) )) == null ? '' : __t) +
-')\n          </li>\n        ';
+')\n\t\t\t\t\t</li>\n\t\t\t\t';
  } ;
-__p += ' \n      ';
+__p += ' \n\t\t\t';
  }) ;
-__p += '\n    </ul>\n  </div>\n\n  ';
+__p += '\n\t\t</ul>\n\t</div>\n\n\t';
  if (bill.sponsors.length > 1) { ;
-__p += '\n    <ul class="sponsors co-sponsors">\n      <h5>Co-Sponsors</h5>\n      \n      <li class="co-sponsors-inner">\n        ';
+__p += '\n\t\t<ul class="bill-sponsors">\n\t\t\t<h5>Co-Sponsors</h5>\n\t\t\t\n\t\t\t<li class="co-sponsors-inner">\n\t\t\t\t';
  _.each(bill.sponsors, function(s) { ;
-__p += '\n          ';
+__p += '\n\t\t\t\t\t';
  if (s.type !== 'primary') { ;
-__p += '\n            <div class="sponsor" data-leg-id="' +
+__p += '\n\t\t\t\t\t\t<div class="sponsor" data-leg-id="' +
 ((__t = ( s.leg_id )) == null ? '' : __t) +
 '" data-sponsor-type="' +
 ((__t = ( s.type )) == null ? '' : __t) +
-'">\n              ' +
+'">\n\t\t\t\t\t\t\t' +
 ((__t = ( s.name )) == null ? '' : __t) +
 ' (' +
 ((__t = ( s.type )) == null ? '' : __t) +
-')\n            </div>\n          ';
+')\n\t\t\t\t\t\t</div>\n\t\t\t\t\t';
  } ;
-__p += '\n        ';
+__p += '\n\t\t\t\t';
  }) ;
-__p += '\n      </li>\n    </ul>\n  ';
+__p += '\n\t\t\t</li>\n\t\t</ul>\n\t';
  } ;
-__p += '\n\n  ';
+__p += '\n\n\t<aside class="bill-auxiliary">\n\n\t\t';
+ if (_.isArray(bill.links) && bill.links.length > 0) { ;
+__p += '\n\t\t\t<div class="e-links">\n\t\t\t\t<h4>In the news</h4>\n\t\t\t\t<ul class="e-links-list">\n\t\t\t\t\t';
+ _.each(bill.links, function(l) { ;
+__p += '\n\t\t\t\t\t\t<li><a href="' +
+((__t = ( l.url )) == null ? '' : __t) +
+'">' +
+((__t = ( l.title )) == null ? '' : __t) +
+'</a></li>\n\t\t\t\t\t';
+ }) ;
+__p += '\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t';
+ } ;
+__p += '\n\n\t\t';
  if (_.isArray(bill.votes) && bill.votes.length > 0) { ;
-__p += '\n    <div class="votes">\n      <h5>Votes</h5>\n      \n      <div class="votes-inner">\n        ';
+__p += '\n\t\t\t<div class="bill-votes">\n\t\t\t\t<h5>Votes</h5>\n\t\t\t\t\n\t\t\t\t<div>\n\t\t\t\t\t';
  _.each(bill.votes, function(v) { ;
-__p += '\n          ' +
+__p += '\n\t\t\t\t\t\t' +
 ((__t = ( v.date.format('MMM DD, YYYY') )) == null ? '' : __t) +
-':\n          ' +
+':\n\t\t\t\t\t\t' +
 ((__t = ( v.motion )) == null ? '' : __t) +
 ' ' +
 ((__t = ( (v.passed) ? 'passed' : 'failed' )) == null ? '' : __t) +
-':\n          ' +
+':\n\t\t\t\t\t\t' +
 ((__t = ( v.yes_count )) == null ? '' : __t) +
-' Y - \n          ' +
+' Y - \n\t\t\t\t\t\t' +
 ((__t = ( v.no_count )) == null ? '' : __t) +
-' N <br />\n        ';
+' N\n\t\t\t\t\t';
  }) ;
-__p += '\n      </div>\n    </div>\n  ';
+__p += '\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t';
  } ;
-__p += '\n  \n  <div class="sources">\n    <h5>Sources</h5>\n    \n    ';
+__p += '\n\t\t\n\t\t<div class="bill-sources">\n\t\t\t<h5>Sources</h5>\n\t\t\t\n\t\t\t';
  var sourceCount = 0; ;
-__p += '\n    ';
+__p += '\n\t\t\t';
  _.each(bill.sources, function(s) {  sourceCount++ ; ;
-__p += '\n      <a href="' +
+__p += '\n\t\t\t\t<a href="' +
 ((__t = ( s.url )) == null ? '' : __t) +
-'" target="_blank">\n        ';
+'" target="_blank">\n\t\t\t\t\t';
  if (s.text) { ;
-__p += '\n          ' +
+__p += '\n\t\t\t\t\t\t' +
 ((__t = ( s.text )) == null ? '' : __t) +
-'\n        ';
+'\n\t\t\t\t\t';
  } else { ;
-__p += '\n          Source at ' +
+__p += '\n\t\t\t\t\t\tSource at ' +
 ((__t = ( _.parseURL(s.url).hostname )) == null ? '' : __t) +
 ' [' +
 ((__t = ( sourceCount )) == null ? '' : __t) +
-']\n        ';
+']\n\t\t\t\t\t';
  } ;
-__p += '\n      </a> <br />\n    ';
+__p += '\n\t\t\t\t</a> <br />\n\t\t\t';
  }) ;
-__p += '\n  </div>\n</div>';
+__p += '\n\t\t</div>\n\t</aside>\n\n</div>';
 
 }
 return __p

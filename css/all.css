@@ -142,7 +142,7 @@ dd {
 }
 
 menu, ol, ul {
-  padding: 0 0 0 40px;
+  padding: 0;
 }
 
 nav ul, nav ol {
@@ -298,21 +298,6 @@ a:hover, a:active {
   text-shadow: none;
 }
 
-sub, sup {
-  font-size: 0.75rem;
-  position: relative;
-  line-height: 1;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
 h1, h2, h3, h4, h5, h6,
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   margin: 0 0 1rem;
@@ -333,6 +318,11 @@ h2 a {
   font-size: 2rem;
 }
 
+h3,
+h3 a {
+  font-size: 1.5rem;
+}
+
 h4,
 h4 a {
   margin-bottom: 0;
@@ -351,34 +341,8 @@ p :last-of-type {
   margin-bottom: 0;
 }
 
-hr {
-  margin: 1rem 0;
-  border: 0;
-  border-top: 1px solid #969696;
-  border-bottom: 1px solid #f8f8f8;
-}
-
-strong {
-  font-weight: bold;
-}
-
-em {
-  font-style: italic;
-}
-
-figcaption {
-  font-size: 0.75rem;
-  font-style: italic;
-  color: #555555;
-  padding: 0.25rem;
-}
-
-small {
-  font-size: 0.75rem;
-}
-
-cite {
-  font-style: normal;
+ins {
+  text-decoration: none;
 }
 
 img {
@@ -395,35 +359,7 @@ table {
   background-color: transparent;
 }
 
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
-.visuallyhidden {
-  overflow: hidden;
-  position: absolute;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
-  position: static;
-  clip: auto;
-  height: auto;
-  width: auto;
-  margin: 0;
-  overflow: visible;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.list--unstyled {
+.bill-actions ul, .bill-votes ul {
   list-style: none;
 }
 
@@ -572,6 +508,17 @@ table {
   max-width: 50px;
 }
 
+.bill-action-date, .bill-votes span {
+  padding: 0.25rem 0.5rem;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #00d4da;
+  color: #f8f8f8;
+}
+
 .bills-list .bill {
   margin-bottom: 1em;
   padding: 1em;
@@ -581,6 +528,9 @@ table {
 .bill-summary {
   float: left;
   width: 70%;
+}
+.bill-summary h2, .bill-summary h3 {
+  font-family: adelle, "Helvetica Neue", Arial, sans-serif;
 }
 
 .bill-status {
@@ -645,12 +595,10 @@ table {
 }
 
 .bill-expand {
-  clear: both;
-  display: block;
-  width: auto;
-  line-height: 2.5em;
-  margin: 0 auto;
   padding: 0 0.5rem;
+  display: inline-block;
+  line-height: 2.5em;
+  margin-top: 1em;
   background: #dafeff;
   font-weight: bold;
 }
@@ -661,6 +609,61 @@ table {
 
 .is-expandable .bill-top {
   margin-bottom: 0;
+}
+
+.bill-bottom {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #00d4da;
+}
+
+.bill-news-links {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #444444;
+  color: white;
+}
+.bill-news-links ul {
+  list-style: none;
+}
+.bill-news-links a {
+  word-break: break-all;
+}
+
+.bill-actions {
+  float: left;
+  width: 68%;
+}
+.bill-actions ul {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.bill-actions li {
+  margin-bottom: 0.5rem;
+}
+
+.bill-action-date {
+  margin-right: 1rem;
+  display: inline-block;
+}
+
+.bill-auxiliary {
+  padding: 1rem;
+  float: right;
+  width: 28%;
+  background: #dafeff;
+}
+
+.bill-votes ul {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #00d4da;
+}
+.bill-votes li {
+  margin-bottom: 0.5rem;
 }
 
 .bill h3 {
@@ -702,10 +705,6 @@ table {
 .primary-bill-inner,
 .companion-bill-inner {
   margin-right: 1.5em;
-}
-
-.bill .bill-details-link {
-  display: none;
 }
 
 .sources a {
