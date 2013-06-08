@@ -1,4 +1,4 @@
-$namespace: ls;
+$namespace: lt;
 
 // Color Palette
 ////////////////////////////
@@ -30,6 +30,7 @@ $icon-set		: url() !default;
 // type
 ////////////////////////////
 
+$font-fancy					: adelle, "Helvetica Neue", Arial, sans-serif;
 $base-font 					: "Helvetica Neue", Arial, sans-serif !default;
 $font-serif 				: Georgia, "Times New Roman", serif !default;
 $font-script 				: "" !default;
@@ -45,7 +46,7 @@ $link-padding 			: 0.5em !default;
 
 // layout
 ////////////////////////////
-$unit 			: $base-font-size !default;
+$unit-whole 	: $base-font-size !default;
 $unit-half 		: $base-font-size / 2 !default;
 $unit-quarter	: $base-font-size / 4 !default;
 
