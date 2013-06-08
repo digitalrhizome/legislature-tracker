@@ -57,51 +57,55 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '\n' +
+__p +=
 ((__t = ( header )) == null ? '' : __t) +
-'\n\n<div class="category-container">\n  <h2>\n    ';
+'\n\n<div class="category-container">\n\n\t<header>\n\t\t';
  if (category.image) { ;
-__p += '\n      <img class="category-image" src="' +
+__p += '\n\t\t<img class="category-image" src="' +
 ((__t = ( LT.utils.imagePath(category.image) )) == null ? '' : __t) +
-'" />\n    ';
+'" />\n\t\t';
  } ;
-__p += '\n    \n    ' +
+__p += '\n\n\t\t<section class="category-meta">\n\t\t\t<h2>' +
 ((__t = ( category.title )) == null ? '' : __t) +
-'\n  </h2>\n  \n  <p>' +
+'</h2>\n\t\t\t';
+ if (category.description) { ;
+__p += '\n\t\t\t<p>' +
 ((__t = ( category.description )) == null ? '' : __t) +
-'</p>\n  \n  ';
+'</p>\n\t\t\t';
+ } ;
+__p += '\n\t\t</section>\n\n\t\t<p class="category-bill-total">\n\t\t\tWatching \n\t\t\t<strong>' +
+((__t = ( category.bills.length )) == null ? '' : __t) +
+'</strong>\n\t\t\t';
+ if (typeof category.total_bill_count != 'undefined') { ;
+__p += '\n\t\t\t\tof ' +
+((__t = ( category.total_bill_count )) == null ? '' : __t) +
+'\n\t\t\t';
+ } ;
+__p += '\n\t\t\tbills in the ' +
+((__t = ( category.title )) == null ? '' : __t) +
+' category.\n\t\t</p>\n\n\t</header>\n\t\n\t';
  if (_.isArray(category.links) && category.links.length > 0) { ;
-__p += '\n    <div class="e-links">\n      <h4>In the news</h4>\n      \n      <ul class="e-links-list">\n        ';
+__p += '\n\t\t<nav class="category-news">\n\t\t\t<h4>In the news</h4>\n\t\t\t';
  _.each(category.links, function(l) { ;
-__p += '\n          <li><a href="' +
+__p += '\n\t\t\t\t<a href="' +
 ((__t = ( l.url )) == null ? '' : __t) +
 '">' +
 ((__t = ( l.title )) == null ? '' : __t) +
-'</a></li>\n        ';
+'</a>\n\t\t\t';
  }) ;
-__p += '\n      </ul>\n    </div>\n  ';
+__p += '\n\t\t</nav>\n\t';
  } ;
-__p += '\n  \n  <div class="clear-block bills-list">\n    ';
+__p += '\n\t\n\t<section class="bills-list">\n\t\t';
  category.bills.each(function(b) { ;
-__p += '\n      ' +
+__p += '\n\t\t\t' +
 ((__t = ( templates.ebill({
-        bill: b.toJSON(),
-        expandable: true,
-        templates: templates
-      }) )) == null ? '' : __t) +
-'\n    ';
+				bill: b.toJSON(),
+				expandable: true,
+				templates: templates
+			}) )) == null ? '' : __t) +
+'\n\t\t';
  }); ;
-__p += '\n  </div>\n  \n  <div class="clear-block total-bill">\n    Watching \n    <strong>' +
-((__t = ( category.bills.length )) == null ? '' : __t) +
-'</strong>\n    ';
- if (typeof category.total_bill_count != 'undefined') { ;
-__p += '\n      of ' +
-((__t = ( category.total_bill_count )) == null ? '' : __t) +
-'\n    ';
- } ;
-__p += '\n    bills in the ' +
-((__t = ( category.title )) == null ? '' : __t) +
-' category.\n  </div>\n</div>';
+__p += '\n\t</section>\n\n</div>';
 
 }
 return __p
@@ -114,11 +118,11 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 
  if (!expandable) { ;
-__p += '\n  ' +
+__p += '\n\t' +
 ((__t = ( header )) == null ? '' : __t) +
 '\n';
  } ;
-__p += '\n<div class="bill ebill ';
+__p += '\n<section class="bill ebill ';
  if (expandable) { ;
 __p += 'is-expandable';
  } ;
@@ -126,7 +130,49 @@ __p += ' ';
  if (!bill.hasBill) { ;
 __p += 'no-bill';
  } ;
-__p += '">\n  <div class="bill-top">\n    <div class="bill-status">\n      <img class="lower ';
+__p += '">\n\n\t<div class="bill-top">\n\n\t\t<section class="bill-summary">\n\t\t\n\t\t\t';
+ if (expandable) { ;
+__p += '<h3>';
+ } else { ;
+__p += '<h2>';
+ } ;
+__p += '\n\t\t\t\t' +
+((__t = ( bill.title )) == null ? '' : __t) +
+'\n\t\t\t\t<a class="permalink" title="Permanent link to bill" href="#/bill/' +
+((__t = ( encodeURI(bill.bill) )) == null ? '' : __t) +
+'"></a>\n\t\t\t';
+ if (expandable) { ;
+__p += '</h3>';
+ } else { ;
+__p += '</h2>';
+ } ;
+__p += '\n\t\t\t\n\t\t\t';
+ if (!bill.hasBill){ ;
+__p += '\n\t\t\t\t<div class="latest-action">\n\t\t\t\t\t<em>This bill has not been tracked by the legislature yet.</em>\n\t\t\t\t</div>\n\t\t\t';
+ } ;
+__p += '\n\t\t\t\n\t\t\t<div class="bill-description">\n\t\t\t\t';
+ if (bill.description.indexOf('<p') < 3) { ;
+__p += '\n\t\t\t\t\t' +
+((__t = ( _.ellipsisText(bill.description, 60) )) == null ? '' : __t) +
+'\n\t\t\t\t';
+ } else { ;
+__p += '\n\t\t\t\t\t<p>' +
+((__t = ( _.ellipsisText(bill.description, 60) )) == null ? '' : __t) +
+'</p>\n\t\t\t\t';
+ } ;
+__p += '\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="e-bill-categories">\n\t\t\t\t<strong>Categories:</strong>\n\t\t\t\t';
+ _.each(bill.categories, function(c, i) { ;
+__p += '\n\t\t\t\t\t<a href="#/category/' +
+((__t = ( c.get('id') )) == null ? '' : __t) +
+'">\n\t\t\t\t\t\t' +
+((__t = ( c.get('title') )) == null ? '' : __t) +
+'</a>';
+ if (i < bill.categories.length - 1) { ;
+__p += ',';
+ } ;
+__p += '\n\t\t\t\t';
+ }) ;
+__p += '\n\t\t\t</div>\n\n\t\t</section>\n\n\t\t<aside class="bill-status">\n\t\t\t\n\t\t\t<div class="bill-status-indicators">\n\t\t\t\t<img class="lower ';
  if (bill.newest_action && Math.abs(parseInt(bill.newest_action.date.diff(moment(), 'days'))) < LT.options.recentChangeThreshold) { ;
 __p += 'passed';
  } ;
@@ -138,7 +184,7 @@ __p += 'Recently changed';
  } else { ;
 __p += 'Not recently changed';
  } ;
-__p += '" />\n      \n      <img class="lower ';
+__p += '" />\n\t\t\t\t\n\t\t\t\t<img class="lower ';
  if (bill.actions && bill.actions.lower) { ;
 __p += 'passed';
  } ;
@@ -152,7 +198,7 @@ __p += 'Passed ' +
 __p += 'Not passed ' +
 ((__t = ( LT.utils.translate('chamber', 'lower') )) == null ? '' : __t);
  } ;
-__p += '" />\n      \n      <img class="upper ';
+__p += '" />\n\t\t\t\t\n\t\t\t\t<img class="upper ';
  if (bill.actions && bill.actions.upper) { ;
 __p += 'passed';
  } ;
@@ -166,9 +212,9 @@ __p += 'Passed ' +
 __p += 'Not passed ' +
 ((__t = ( LT.utils.translate('chamber', 'upper') )) == null ? '' : __t);
  } ;
-__p += '" />\n      \n      ';
+__p += '" />\n\t\t\t\t\n\t\t\t\t';
  if (LT.options.conferenceBill) { ;
-__p += '\n        <img class="conference ';
+__p += '\n\t\t\t\t\t<img class="conference ';
  if (bill.bill_type && bill.bill_type.conference) { ;
 __p += 'passed';
  } ;
@@ -180,9 +226,9 @@ __p += 'Conference bill created';
  } else { ;
 __p += 'Coinference bill not created';
  } ;
-__p += '" />\n      ';
+__p += '" />\n\t\t\t\t';
  } ;
-__p += '\n      \n      <img class="signed ';
+__p += '\n\t\t\t\t\n\t\t\t\t<img class="signed ';
  if (bill.actions && bill.actions.signed) { ;
 __p += 'passed';
  } ;
@@ -194,83 +240,35 @@ __p += 'Signed into law by the Governor';
  } else { ;
 __p += 'Not signed into law';
  } ;
-__p += '" />\n    </div>\n    \n    ';
- if (expandable) { ;
-__p += '<h3>';
- } else { ;
-__p += '<h2>';
- } ;
-__p += '\n      ' +
-((__t = ( bill.title )) == null ? '' : __t) +
-'\n      <a class="permalink" title="Permanent link to bill" href="#/bill/' +
-((__t = ( encodeURI(bill.bill) )) == null ? '' : __t) +
-'"></a>\n    ';
- if (expandable) { ;
-__p += '</h3>';
- } else { ;
-__p += '</h2>';
- } ;
-__p += '\n    \n    ';
- if (!bill.hasBill){ ;
-__p += '\n      <div class="latest-action">\n        <em>This bill has not been tracked by the legislature yet.</em>\n      </div>\n    ';
- } ;
-__p += '\n    \n     ';
+__p += '" />\n\t\t\t</div>\n\t\t\t';
  if (bill.newest_action) { ;
-__p += '\n      <div class="latest-action">\n        Last action ' +
+__p += '\n\t\t\t\t<div class="bill-latest-action">\n\t\t\t\t\tLast action ' +
 ((__t = ( bill.newest_action.date.fromNow() )) == null ? '' : __t) +
-'.\n      </div>\n    ';
+'.\n\t\t\t\t</div>\n\t\t\t';
  } ;
-__p += '\n    \n    <div class="description">\n      ';
- if (bill.description.indexOf('<p') < 3) { ;
-__p += '\n        ' +
-((__t = ( _.ellipsisText(bill.description, 60) )) == null ? '' : __t) +
-'\n      ';
- } else { ;
-__p += '\n        <p>' +
-((__t = ( _.ellipsisText(bill.description, 60) )) == null ? '' : __t) +
-'</p>\n      ';
- } ;
-__p += '\n    </div>\n    \n    <div class="e-bill-categories">\n      <strong>Categories:</strong>\n      ';
- _.each(bill.categories, function(c, i) { ;
-__p += '\n        <a href="#/category/' +
-((__t = ( c.get('id') )) == null ? '' : __t) +
-'">\n          ';
- if (c.get('image')) { ;
-__p += '<img class="category-image" src="' +
-((__t = ( LT.utils.imagePath(c.get('image')) )) == null ? '' : __t) +
-'" />';
- } ;
-__p += '\n          ' +
-((__t = ( c.get('title') )) == null ? '' : __t) +
-'</a>';
- if (i < bill.categories.length - 1) { ;
-__p += ',';
- } ;
-__p += '\n      ';
- }) ;
-__p += '\n    </div>\n    \n    ';
+__p += '\n\n\t\t</aside>\n\n\t\t';
  if (expandable && !(!bill.hasBill && bill.description.split(' ').length < 60 && !(_.isArray(bill.links) && bill.links.length > 0))) { ;
-__p += '\n      <a href="#" class="bill-expand">More detail</a>\n      <a href="#/bill/' +
+__p += '\n\t\t\t<a href="#" class="bill-expand">More detail</a>\n\t\t\t<a href="#/bill/' +
 ((__t = ( encodeURI(bill.bill) )) == null ? '' : __t) +
-'" class="bill-details-link">More detail</a>\n    ';
+'" class="bill-details-link">More detail</a>\n\t\t';
  } ;
-__p += '\n  </div>\n  \n  <div class="bill-bottom">\n    ';
+__p += '\n\n\n\t</div>\n\t\n\t<div class="bill-bottom">\n\t\t';
  if (_.isArray(bill.links) && bill.links.length > 0) { ;
-__p += '\n      <div class="e-links">\n        <h4>In the news</h4>\n        <ul class="e-links-list">\n          ';
+__p += '\n\t\t\t<div class="e-links">\n\t\t\t\t<h4>In the news</h4>\n\t\t\t\t<ul class="e-links-list">\n\t\t\t\t\t';
  _.each(bill.links, function(l) { ;
-__p += '\n            <li><a href="' +
+__p += '\n\t\t\t\t\t\t<li><a href="' +
 ((__t = ( l.url )) == null ? '' : __t) +
 '">' +
 ((__t = ( l.title )) == null ? '' : __t) +
-'</a></li>\n          ';
+'</a></li>\n\t\t\t\t\t';
  }) ;
-__p += '\n        </ul>\n      </div>\n    ';
+__p += '\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t';
  } ;
-__p += '\n    \n    ';
+__p += '\n\t\t\n\t\t';
  if (_.isArray(bill.custom_events) && bill.custom_events.length > 0) { ;
-__p += '\n      <div class="custom-events">\n        <h4>Events</h4>\n        <ul class="custom-events-inner">\n          ';
+__p += '\n\t\t\t<div class="custom-events">\n\t\t\t\t<h4>Events</h4>\n\t\t\t\t<ul class="custom-events-inner">\n\t\t\t\t\t';
  _.each(bill.custom_events, function(e) { ;
-__p += '\n            <li><strong>' +
+__p += '\n\t\t\t\t\t\t<li><strong>' +
 ((__t = ( e.bill_id )) == null ? '' : __t) +
 ' ' +
 ((__t = ( e.action )) == null ? '' : __t) +
@@ -278,49 +276,49 @@ __p += '\n            <li><strong>' +
 ((__t = ( e.date.format('MMM DD, YYYY') )) == null ? '' : __t) +
 ': ' +
 ((__t = ( e.description )) == null ? '' : __t) +
-'</li>\n          ';
+'</li>\n\t\t\t\t\t';
  }) ;
-__p += '\n        </ul>\n      </div>\n    ';
+__p += '\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t';
  } ;
-__p += '\n\n    ';
+__p += '\n\n\t\t';
  if (_.isObject(bill.bill_conference)) { ;
-__p += '\n      <div class="conference-bill">\n        <div class="conference-bill-inner clear-block">\n          ' +
+__p += '\n\t\t\t<div class="conference-bill">\n\t\t\t\t<div class="conference-bill-inner">\n\t\t\t\t\t' +
 ((__t = ( templates.osbill({
-            title: 'Conference Bill',
-            bill: bill.bill_conference.toJSON(),
-            templates: templates
-          }) )) == null ? '' : __t) +
-'\n        </div>\n      </div>\n      \n      <a class="expand-other-bills" href="#">Show other bills</a>\n    ';
+						title: 'Conference Bill',
+						bill: bill.bill_conference.toJSON(),
+						templates: templates
+					}) )) == null ? '' : __t) +
+'\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<a class="expand-other-bills" href="#">Show other bills</a>\n\t\t';
  } ;
-__p += '\n    \n    <div class="clear-block ';
+__p += '\n\t\t\n\t\t<div class="';
  if (_.isObject(bill.bill_conference)) { ;
 __p += 'has-conference-bill';
  } ;
-__p += '">\n      ';
+__p += '">\n\t\t\t';
  if (_.isObject(bill.bill_primary)) { ;
-__p += '\n        <div class="primary-bill ';
+__p += '\n\t\t\t\t<div class="primary-bill ';
  if (_.isObject(bill.bill_companion)) { ;
 __p += 'with-companion';
  } ;
-__p += '">\n          <div class="primary-bill-inner clear-block">\n            ' +
+__p += '">\n\t\t\t\t\t<div class="primary-bill-inner">\n\t\t\t\t\t\t' +
 ((__t = ( templates.osbill({
-              title: (LT.options.chamberLabel) ? LT.utils.translate('chamber', bill.bill_primary.get('chamber')) + ' Bill' : 'Primary Bill',
-              bill: bill.bill_primary.toJSON(),
-              templates: templates
-            }) )) == null ? '' : __t) +
-'\n          </div>\n        </div>\n      ';
+							title: (LT.options.chamberLabel) ? LT.utils.translate('chamber', bill.bill_primary.get('chamber')) + ' Bill' : 'Primary Bill',
+							bill: bill.bill_primary.toJSON(),
+							templates: templates
+						}) )) == null ? '' : __t) +
+'\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t';
  } ;
-__p += '\n      \n      ';
+__p += '\n\t\t\t\n\t\t\t';
  if (_.isObject(bill.bill_companion)) { ;
-__p += '\n        <div class="companion-bill">\n          <div class="companion-bill-inner clear-block">\n            ' +
+__p += '\n\t\t\t\t<div class="companion-bill">\n\t\t\t\t\t<div class="companion-bill-inner">\n\t\t\t\t\t\t' +
 ((__t = ( templates.osbill({
-              title: (LT.options.chamberLabel) ? LT.utils.translate('chamber', bill.bill_companion.get('chamber')) + ' Bill' : 'Companion Bill',
-              bill: bill.bill_companion.toJSON(),
-              templates: templates
-            }) )) == null ? '' : __t) +
-'\n          </div>\n        </div>\n      ';
+							title: (LT.options.chamberLabel) ? LT.utils.translate('chamber', bill.bill_companion.get('chamber')) + ' Bill' : 'Companion Bill',
+							bill: bill.bill_companion.toJSON(),
+							templates: templates
+						}) )) == null ? '' : __t) +
+'\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t';
  } ;
-__p += '\n    </div>\n  </div>\n</div>';
+__p += '\n\t\t</div>\n\t</div>\n\n</section>';
 
 }
 return __p
@@ -341,19 +339,19 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class="ls-header-container">\n  <div class="ls-header">\n    <a class="all-categories-link" href="#/">\n      <img src="' +
+__p += '<nav class="nav-categories">\n\t<a class="all-categories-link" href="#/">\n\t\t<!-- <img src="' +
 ((__t = ( LT.options.imagePath )) == null ? '' : __t) +
-'back-100-85.png" />\n      All Categories\n    </a>\n    \n    <span class="categories-nav">\n      &nbsp;&nbsp;|&nbsp;&nbsp;\n      ';
+'back-100-85.png" /> -->\n\t\tAll Categories\n\t</a>\n\t<span>\n\t\t';
  _.each(categories, function(c) { ;
-__p += '\n        <a class="" href="#/category/' +
+__p += '\n\t\t\t<a class="" href="#/category/' +
 ((__t = ( c.id )) == null ? '' : __t) +
 '" title="' +
 ((__t = ( c.title )) == null ? '' : __t) +
-'">\n          ' +
+'">\n\t\t\t\t' +
 ((__t = ( (c.short_title) ? c.short_title : c.title.split(' ')[0] )) == null ? '' : __t) +
-'\n        </a>&nbsp;&nbsp;\n      ';
+'\n\t\t\t</a>\n\t\t';
  }) ;
-__p += '\n    </span>\n  </div>\n</div>';
+__p += '\n\t</span>\n</nav>';
 
 }
 return __p
@@ -443,7 +441,7 @@ __p += '\n    <p class="description">\n      ' +
 ((__t = ( bill.title )) == null ? '' : __t) +
 '\n    </p>\n  ';
  } ;
-__p += '\n\n  <div class="sponsors primary-sponsors">\n    <h5>Primary sponsors</h5>\n    \n    <div class="clear-block">\n      ';
+__p += '\n\n  <div class="sponsors primary-sponsors">\n    <h5>Primary sponsors</h5>\n    \n    <div>\n      ';
  _.each(bill.sponsors, function(s) { ;
 __p += '\n        ';
  if (s.type === 'primary') { ;
@@ -475,7 +473,7 @@ __p += ' \n      ';
  }) ;
 __p += '\n    </ul>\n  </div>\n\n  ';
  if (bill.sponsors.length > 1) { ;
-__p += '\n    <ul class="sponsors co-sponsors clear-block">\n      <h5>Co-Sponsors</h5>\n      \n      <li class="co-sponsors-inner clear-block">\n        ';
+__p += '\n    <ul class="sponsors co-sponsors">\n      <h5>Co-Sponsors</h5>\n      \n      <li class="co-sponsors-inner">\n        ';
  _.each(bill.sponsors, function(s) { ;
 __p += '\n          ';
  if (s.type !== 'primary') { ;
@@ -495,7 +493,7 @@ __p += '\n      </li>\n    </ul>\n  ';
  } ;
 __p += '\n\n  ';
  if (_.isArray(bill.votes) && bill.votes.length > 0) { ;
-__p += '\n    <div class="votes">\n      <h5>Votes</h5>\n      \n      <div class="votes-inner clear-block">\n        ';
+__p += '\n    <div class="votes">\n      <h5>Votes</h5>\n      \n      <div class="votes-inner">\n        ';
  _.each(bill.votes, function(v) { ;
 __p += '\n          ' +
 ((__t = ( v.date.format('MMM DD, YYYY') )) == null ? '' : __t) +
