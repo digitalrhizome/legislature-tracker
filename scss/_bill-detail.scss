@@ -121,4 +121,20 @@
 	border-top: 1px solid $primary-color;
 }
 
+// News Links
+
+.bill-news-links {
+	@include rem(margin-bottom, $unit-whole);
+	@include rem(padding, $unit-whole);
+	background: $secondary-color;
+	color: white;
+
+	ul {
+		list-style: none;
+	}
+	a {
+		word-break: break-all;
+	}
+}
+
 }
