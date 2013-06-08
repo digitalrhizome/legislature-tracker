@@ -2,6 +2,12 @@
 	@include box-sizing(border-box);
 }
 
+div,
+section, header, nav, aside, footer,
+ul {
+	@include clearfix;
+}
+
 //   =ROOT   ==================================================
 html, body {
     height: 100%;
@@ -75,38 +81,27 @@ sub { bottom: -0.25em; }
 h1, h2, h3, h4, h5, h6, 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a  { 
 	@include rem(margin, 0 0 16px); // later: introduce vertical rhythm based on font size
+	@include rem(font-size, 16px);
 	font-family: inherit;
 	font-weight: bold;
 	text-rendering: optimizelegibility;
-	small {
-		font-weight: normal;
-	}
 }
 
 h1, 
 h1 a {
-	font-family: adelle, sans-serif;
-	@include rem(font-size, 24px);
-	@include rem(margin-bottom, 16px); // bottom margins defined until vertical rhythm is implemented
+	font-family: $font-fancy;
+	@include rem(font-size, 48px);
 }
 h2, 
 h2 a {
-	@include rem(font-size, 20px);
-	@include rem(margin-bottom, 16px);
-}
-h3, 
-h3 a {
-	@include rem(font-size, 16px);
-	@include rem(margin-bottom, 16px);
+	@include rem(font-size, 32px);
 }
 h4, 
 h4 a {
-	@include rem(font-size, 16px);
 	margin-bottom: 0;
 }
 h5, 
 h5 a, h6, h6 a {
-	@include rem(font-size, 16px);
 	margin-bottom: 0;
 }
 
@@ -194,6 +189,10 @@ table {
 // Hide visually and from screenreaders, but maintain layout
 .invisible { 
 	visibility: hidden; 
+}
+
+.list--unstyled {
+	list-style: none;
 }
 
 @include respond-min(767px) {
