@@ -66,17 +66,6 @@ a {
 
 // TYPE
 
-sub, sup {
-	@include rem(font-size, 12px);
-	position: relative;
-	line-height: 1;
-	vertical-align: baseline;
-}
-sup { top: -0.5em; }
-sub { bottom: -0.25em; }
-
-
-//   =HEADINGS & PARAGRAPHS   =================================
 
 h1, h2, h3, h4, h5, h6, 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a  { 
@@ -107,36 +96,41 @@ h5 a, h6, h6 a {
 
 p {
 	margin: 0;
-	@include rem(margin-bottom, 16px); // later: introduce vertical rhythm based on font size
+	@include rem(margin-bottom, 16px);
 	:last-of-type {
 		margin-bottom: 0;
 	}
 }
 
-hr {
-	@include rem(margin, 16px 0);
-	border: 0;
-	border-top: 1px solid $light-grey;
-	border-bottom: 1px solid $white;
+// strong { font-weight: bold; }
+
+// em { font-style: italic; }
+
+// sub, sup {
+// 	@include rem(font-size, 12px);
+// 	position: relative;
+// 	line-height: 1;
+// 	vertical-align: baseline;
+// }
+// sup { top: -0.5em; }
+// sub { bottom: -0.25em; }
+
 }
 
-strong { font-weight: bold; }
-em { font-style: italic; }
+// figcaption {
+// 	@include rem(font-size, 12px);
+// 	font-style: italic;
+// 	color: $grey;
+// 	@include rem(padding, 4px);
+// }
 
-figcaption {
-	@include rem(font-size, 12px);
-	font-style: italic;
-	color: $grey;
-	@include rem(padding, 4px);
-}
+// small {
+// 	@include rem(font-size, 12px);
+// }
 
-small {
-	@include rem(font-size, 12px);
-}
-
-cite { 
-	font-style: normal; 
-}
+// cite { 
+// 	font-style: normal; 
+// }
 
 img {
 	height: auto;
