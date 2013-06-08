@@ -177,22 +177,22 @@ table {
 }
 
 // Hide from both screenreaders and browsers: h5bp.com/u
-.hidden { 
+%hidden { 
 	display : none !important;
 	visibility : hidden;
 }
 
 // Hide only visually: h5bp.com/v
-.visuallyhidden { 
+%visuallyhidden { 
 	@include visuallyhidden;
 }
 
 // Hide visually and from screenreaders, but maintain layout
-.invisible { 
+%invisible { 
 	visibility: hidden; 
 }
 
-.list--unstyled {
+%list-unstyled {
 	list-style: none;
 }
 
