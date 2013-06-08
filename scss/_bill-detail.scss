@@ -112,3 +112,13 @@
 .is-expandable .bill-top {
 	margin-bottom: 0;
 }
+
+// Bottom
+
+.bill-bottom {
+	@include rem(margin-top, $unit-whole);
+	@include rem(padding-top, $unit-half);
+	border-top: 1px solid $primary-color;
+}
+
+}
