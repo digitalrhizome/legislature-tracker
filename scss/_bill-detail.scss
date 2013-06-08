@@ -137,4 +137,45 @@
 	}
 }
 
+// Actions
+
+.bill-actions {
+	float: left;
+	width: 68%;
+
+	ul {
+		@include border-radius;
+		@extend %list-unstyled;
+	}
+	li {
+		@include rem(margin-bottom, $unit-half);
+	}
+}
+
+.bill-action-date {
+	@extend %flag;
+	@include rem(margin-right, $unit-whole);
+	display: inline-block;
+}
+
+.bill-auxiliary {
+	@include rem(padding, $unit-whole);
+	float: right;
+	width: 28%;
+	background: lighten($primary-color, 50);
+}
+
+.bill-votes {
+	ul {
+		@include rem(margin-bottom, $unit-half);
+		@include rem(padding-bottom, $unit-half);
+		@extend %list-unstyled;
+		border-bottom: 1px dashed $primary-color;
+	}
+	li {
+		@include rem(margin-bottom, $unit-half);
+	}
+	span {
+		@extend %flag;
+	}
 }
