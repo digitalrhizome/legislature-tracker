@@ -49,10 +49,10 @@
   </div>
 
   <% if (bill.sponsors.length > 1) { %>
-    <ul class="sponsors co-sponsors clear-block">
+    <ul class="sponsors co-sponsors">
       <h5>Co-Sponsors</h5>
       
-      <li class="co-sponsors-inner clear-block">
+      <li class="co-sponsors-inner">
         <% _.each(bill.sponsors, function(s) { %>
           <% if (s.type !== 'primary') { %>
             <div class="sponsor" data-leg-id="<%= s.leg_id %>" data-sponsor-type="<%= s.type %>">
