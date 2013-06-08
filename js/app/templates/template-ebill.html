@@ -104,7 +104,7 @@
 			<a class="expand-other-bills" href="#">Show other bills</a>
 		<% } %>
 		
-		<div class="<% if (_.isObject(bill.bill_conference)) { %>has-conference-bill<% } %>">
+		<div <% if (_.isObject(bill.bill_conference)) { %>class="has-conference-bill"<% } %>>
 			<% if (_.isObject(bill.bill_primary)) { %>
 				<div class="primary-bill <% if (_.isObject(bill.bill_companion)) { %>with-companion<% } %>">
 					<div class="primary-bill-inner">
