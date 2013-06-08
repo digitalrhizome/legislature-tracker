@@ -114,7 +114,7 @@
       var current = $this.text();
       
       $this.text((current === text[0]) ? text[1] : text[0]);
-      $this.parent().parent().toggleClass('expanded').find('.bill-bottom').slideToggle();
+      $this.parent().toggleClass('expanded').find('.bill-bottom').slideToggle();
       
       this.checkOverflows();
       return this;
