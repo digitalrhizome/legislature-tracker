@@ -1,3 +1,10 @@
+%flag {
+	@include rem(padding, $unit-quarter $unit-half);
+	@include border-radius;
+	background: $primary-color;
+	color: $white;	
+}
+
 // Bill List
 
 .bills-list .bill {
