@@ -21,7 +21,7 @@
   <div class="sponsors primary-sponsors">
     <h5>Primary sponsors</h5>
     
-    <div class="clear-block">
+    <div>
       <% _.each(bill.sponsors, function(s) { %>
         <% if (s.type === 'primary') { %>
           <div class="sponsor" data-leg-id="<%= s.leg_id %>" data-sponsor-type="<%= s.type %>">
@@ -68,7 +68,7 @@
     <div class="votes">
       <h5>Votes</h5>
       
-      <div class="votes-inner clear-block">
+      <div class="votes-inner">
         <% _.each(bill.votes, function(v) { %>
           <%= v.date.format('MMM DD, YYYY') %>:
           <%= v.motion %> <%= (v.passed) ? 'passed' : 'failed' %>:
