@@ -1,0 +1,19 @@
+// Main Nav
+
+.nav-categories {
+	@include rem(margin-bottom, $unit-whole * 2);
+	background: lighten($primary-color, 50);
+	a {
+		margin-right: 1em;
+		line-height: 3em;
+		&:first-of-type {
+			margin-left: 1em;
+		}
+	}
+}
+
+.category-container header .category-image {
+	float: left;
+	@include rem(margin-right, $unit-whole);
+	max-width: 50px;
+}
