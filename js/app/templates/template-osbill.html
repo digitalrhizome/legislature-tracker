@@ -1,96 +1,106 @@
 <% if (typeof detailed != 'undefined' && detailed)  { %>
-  <%= header %>
+	<%= header %>
 <% } %>
 
 <div class="osbill">
-  <h4>
-    <% if (typeof title != 'undefined') { %>
-      <%= title %> (<%= bill.bill_id %>)
-    <% } else { %>
-      <%= bill.bill_id %>
-    <% } %>
-    <a class="permalink" title="Permanent link to bill" href="#/bill-detail/<%= encodeURI(bill.bill_id) %>"></a>
-  </h4>
-  
-  <% if (typeof detailed != 'undefined' && detailed) { %>
-    <p class="description">
-      <%= bill.title %>
-    </p>
-  <% } %>
+	<h4>
+		<% if (typeof title != 'undefined') { %>
+			<%= title %> (<%= bill.bill_id %>)
+		<% } else { %>
+			<%= bill.bill_id %>
+		<% } %>
+		<a class="permalink" title="Permanent link to bill" href="#/bill-detail/<%= encodeURI(bill.bill_id) %>"></a>
+	</h4>
+	
+	<% if (typeof detailed != 'undefined' && detailed) { %>
+		<p class="description">
+			<%= bill.title %>
+		</p>
+	<% } %>
 
-  <div class="sponsors primary-sponsors">
-    <h5>Primary sponsors</h5>
-    
-    <div>
-      <% _.each(bill.sponsors, function(s) { %>
-        <% if (s.type === 'primary') { %>
-          <div class="sponsor" data-leg-id="<%= s.leg_id %>" data-sponsor-type="<%= s.type %>">
-            <%= s.name %> (<%= s.type %>)
-          </div>
-        <% } %>
-      <% }) %>
-    </div>
-  </div>
-  
-  <div class="actions">
-    <h5><span class="latest-action-label">Latest </span>Actions</h5>
-    
-    <ul class="actions-inner">
-      <% _.each(bill.actions, function(a) { %>
-        <% if (a.date) { %>
-          <li>
-            <%= a.date.format('MMM DD, YYYY') %>:  
-            <%= a.action %>
-            (<%= LT.utils.translate('chamber', a.actor) %>)
-          </li>
-        <% } %> 
-      <% }) %>
-    </ul>
-  </div>
+	<div class="bill-sponsors bill-sponsors-primary">
+		<h5>Primary sponsors</h5>
+		<% _.each(bill.sponsors, function(s) { %>
+			<% if (s.type === 'primary') { %>
+				<p class="sponsor" data-leg-id="<%= s.leg_id %>" data-sponsor-type="<%= s.type %>">
+					<%= s.name %> (<%= s.type %>)
+				</p>
+			<% } %>
+		<% }) %>
+	</div>
+	
+	<div class="bill-actions">
+		<h5>Latest Actions</h5>
+		
+		<ul>
+			<% _.each(bill.actions, function(a) { %>
+				<% if (a.date) { %>
+					<li>
+						<span class="bill-action-date"><%= a.date.format('MMM DD, YYYY') %></span>
+						<%= a.action %>
+						(<%= LT.utils.translate('chamber', a.actor) %>)
+					</li>
+				<% } %> 
+			<% }) %>
+		</ul>
+	</div>
 
-  <% if (bill.sponsors.length > 1) { %>
-    <ul class="sponsors co-sponsors">
-      <h5>Co-Sponsors</h5>
-      
-      <li class="co-sponsors-inner">
-        <% _.each(bill.sponsors, function(s) { %>
-          <% if (s.type !== 'primary') { %>
-            <div class="sponsor" data-leg-id="<%= s.leg_id %>" data-sponsor-type="<%= s.type %>">
-              <%= s.name %> (<%= s.type %>)
-            </div>
-          <% } %>
-        <% }) %>
-      </li>
-    </ul>
-  <% } %>
+	<% if (bill.sponsors.length > 1) { %>
+		<ul class="bill-sponsors">
+			<h5>Co-Sponsors</h5>
+			
+			<li class="co-sponsors-inner">
+				<% _.each(bill.sponsors, function(s) { %>
+					<% if (s.type !== 'primary') { %>
+						<div class="sponsor" data-leg-id="<%= s.leg_id %>" data-sponsor-type="<%= s.type %>">
+							<%= s.name %> (<%= s.type %>)
+						</div>
+					<% } %>
+				<% }) %>
+			</li>
+		</ul>
+	<% } %>
 
-  <% if (_.isArray(bill.votes) && bill.votes.length > 0) { %>
-    <div class="votes">
-      <h5>Votes</h5>
-      
-      <div class="votes-inner">
-        <% _.each(bill.votes, function(v) { %>
-          <%= v.date.format('MMM DD, YYYY') %>:
-          <%= v.motion %> <%= (v.passed) ? 'passed' : 'failed' %>:
-          <%= v.yes_count %> Y - 
-          <%= v.no_count %> N <br />
-        <% }) %>
-      </div>
-    </div>
-  <% } %>
-  
-  <div class="sources">
-    <h5>Sources</h5>
-    
-    <% var sourceCount = 0; %>
-    <% _.each(bill.sources, function(s) {  sourceCount++ ; %>
-      <a href="<%= s.url %>" target="_blank">
-        <% if (s.text) { %>
-          <%= s.text %>
-        <% } else { %>
-          Source at <%= _.parseURL(s.url).hostname %> [<%= sourceCount %>]
-        <% } %>
-      </a> <br />
-    <% }) %>
-  </div>
+	<aside class="bill-auxiliary">
+
+		<% if (_.isArray(bill.links) && bill.links.length > 0) { %>
+			<div class="e-links">
+				<h4>In the news</h4>
+				<ul class="e-links-list">
+					<% _.each(bill.links, function(l) { %>
+						<li><a href="<%= l.url %>"><%= l.title %></a></li>
+					<% }) %>
+				</ul>
+			</div>
+		<% } %>
+
+		<% if (_.isArray(bill.votes) && bill.votes.length > 0) { %>
+			<div class="bill-votes">
+				<h5>Votes</h5>
+					<% _.each(bill.votes, function(v) { %>
+					<ul>
+						<li><%= v.date.format('MMM DD, YYYY') %></li>
+						<li><strong>Motion:</strong> <%= v.motion %></li>
+						<li><span><%= (v.passed) ? 'passed' : 'failed' %></span> Y <span><%= v.yes_count %></span> N <span><%= v.no_count %></span></li>
+					</ul>
+					<% }) %>
+			</div>
+		<% } %>
+		
+		<div class="bill-sources">
+			<h5>Sources</h5>
+			
+			<% var sourceCount = 0; %>
+			<% _.each(bill.sources, function(s) {  sourceCount++ ; %>
+				<a href="<%= s.url %>" target="_blank">
+					<% if (s.text) { %>
+						<%= s.text %>
+					<% } else { %>
+						Source at <%= _.parseURL(s.url).hostname %> [<%= sourceCount %>]
+					<% } %>
+				</a> <br />
+			<% }) %>
+		</div>
+	</aside>
+
 </div>
