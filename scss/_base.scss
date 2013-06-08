@@ -66,10 +66,11 @@ a {
 
 // TYPE
 
+// HEADINGS & PARAGRAPHS
 
 h1, h2, h3, h4, h5, h6, 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a  { 
-	@include rem(margin, 0 0 16px); // later: introduce vertical rhythm based on font size
+	@include rem(margin, 0 0 16px);
 	@include rem(font-size, 16px);
 	font-family: inherit;
 	font-weight: bold;
@@ -84,6 +85,10 @@ h1 a {
 h2, 
 h2 a {
 	@include rem(font-size, 32px);
+}
+h3, 
+h3 a {
+	@include rem(font-size, 24px);
 }
 h4, 
 h4 a {
