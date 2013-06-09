@@ -1,0 +1,55 @@
+// Main Nav
+
+.nav-categories {
+	@extend %standard-border;
+	@include rem(margin-bottom, $unit-whole * 2);
+	background: lighten($secondary-color, 72);
+	a {
+		display: block;
+		@include rem(padding-left, $unit-whole);
+		line-height: 3em;
+		border-bottom: $border-width $border-style $lighter-grey;
+		&:last-of-type {
+			border-bottom: 0;
+		}
+	}
+	> a:first-of-type {
+		background: lighten($primary-color, 50);
+		border: 0;
+		//background: lighten($primary-color, 50);
+		font-weight: bold;
+	}
+}
+
+.category-container header .category-image {
+	float: left;
+	@include rem(margin-right, $unit-whole);
+	max-width: 50px;
+}
+
+
+@media screen and (min-width: 767px) {
+
+	.category-container {
+		float: right;
+		width: 68%;
+	}
+
+	.nav-categories {
+		float: left;
+		width: 28%;
+	}
+
+}
+
+@media screen and (min-width: 800px) {
+
+	.category-container {
+		width: 78%;
+	}
+
+	.nav-categories {
+		width: 18%;
+	}
+
+}

@@ -1,0 +1,176 @@
+// Bill List
+
+.bills-list .bill {
+	@include rem(padding, $unit-whole);
+	@extend %standard-border;
+	margin-bottom: 1em;
+}
+
+// Summary
+
+.bill-summary {
+	h2, h3 {
+		font-family: $font-fancy;
+	}
+}
+
+.bill-categories {
+	@extend %margin-top;
+}
+
+// Status Indicators
+
+.bill-status {
+	@extend %margin-top;
+}
+
+.bill-status-indicators {
+	margin-bottom: 1em;
+}
+
+.bill-status-indicators img {
+	max-height: 2em;
+	margin-left: .5em;
+	opacity: .25;
+	filter: alpha(opacity = 25);
+}
+.bill-status-indicators img.passed {
+	@extend %opaque;
+}
+
+// Latest Action
+// .bill-latest-action {
+
+// }
+
+// .bill-latest-action-label {
+// 	display: none;
+// }
+
+// Description
+
+.bill .description .ellipsis-ellipsis,
+.bill.is-expandable.expanded .description .ellipsis-ellipsis,
+.bill.is-expandable .description .ellipsis-end {
+	display: none;
+}
+.bill.is-expandable .description .ellipsis-ellipsis,
+.bill.is-expandable.expanded .description .ellipsis-end,
+.bill.is-expandable .description .ellipsis-start p {
+	display: inline;
+}
+.bill.is-expandable.expanded .description .ellipsis-start p {
+	display: block;
+}
+.bill.is-expandable .description .ellipsis-start p:last-child {
+	margin-bottom: 0;
+}
+.bill .description .ellipsis-start p:last-child,
+.bill.is-expandable.expanded .description .ellipsis-start p:last-child {
+	margin-bottom: 1em;
+}
+
+// Expand
+
+.bill-expand {
+	@include rem(padding, 0 $unit-half);
+	display: inline-block;
+	line-height: 2.5em;
+	margin-top: 1em;
+	background: lighten($primary-color, 50);
+	font-weight: bold;
+}
+
+// .expanded .bill-expand {
+// 	margin-bottom: 1em;
+// }
+
+.is-expandable .bill-bottom {
+	display: none;
+}
+
+.is-expandable .bill-top {
+	margin-bottom: 0;
+}
+
+// Bottom
+
+.bill-bottom {
+	@include rem(padding-top, $unit-half);
+	@extend %margin-top;
+	border-top: $border-width $border-style $primary-color;
+}
+
+// News Links
+
+.bill-news-links {
+	@include rem(margin-bottom, $unit-whole);
+	@include rem(padding, $unit-whole);
+	background: $secondary-color;
+	color: white;
+
+	ul {
+		list-style: none;
+	}
+	a {
+		word-break: break-all;
+	}
+}
+
+// Actions
+
+.bill-actions {
+	float: left;
+	width: 68%;
+
+	ul {
+		@include border-radius;
+		@extend %list-unstyled;
+	}
+	li {
+		@include rem(margin-bottom, $unit-half);
+	}
+}
+
+.bill-action-date {
+	@extend %flag;
+	@include rem(margin-right, $unit-whole);
+	display: inline-block;
+}
+
+.bill-auxiliary {
+	background: lighten($primary-color, 50);
+	@include rem(padding, $unit-whole);
+	float: right;
+	width: 28%;
+	//background: lighten($primary-color, 50);
+}
+
+.bill-votes {
+	ul {
+		@include rem(margin-bottom, $unit-half);
+		@include rem(padding-bottom, $unit-half);
+		@extend %list-unstyled;
+		border-bottom: 1px dashed $primary-color;
+	}
+	li {
+		@include rem(margin-bottom, $unit-half);
+	}
+	span {
+		@extend %flag;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+
+	.bill-summary {
+		float: left;
+		width: 70%;
+	}
+
+	.bill-status {
+		text-align: right;
+		float: right;
+	}
+
+}

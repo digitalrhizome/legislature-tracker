@@ -195,6 +195,29 @@ table {
 %list-unstyled {
 	list-style: none;
 }
+%margin-top {
+	@include rem(margin-top, $unit-whole);
+}
+
+// Theming
+
+%standard-border {
+	border: $border-width $border-style $border-color;
+}
+%opaque {
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+%transparent {
+	opacity: .85;
+	filter: alpha(opacity = 85);
+}
+%flag {
+	@include rem(padding, $unit-quarter $unit-half);
+	@include border-radius;
+	background: $primary-color;
+	color: $white;	
+}
 
 @include respond-min(767px) {
 	body {
