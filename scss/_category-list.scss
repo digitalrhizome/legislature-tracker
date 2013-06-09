@@ -36,8 +36,7 @@
 	.category-image {
 		display: block;
 		margin: 0 auto;
-		opacity: .85;
-		filter: alpha(opacity = 85);
+		@extend %transparent;
 		
 		@include old-ie {
 			zoom: 1;
@@ -45,8 +44,7 @@
 		}
 	}
 	.category-image:hover {
-		opacity: 1;
-		filter: alpha(opacity = 100);
+		@extend %opaque;
 	}
 
 }

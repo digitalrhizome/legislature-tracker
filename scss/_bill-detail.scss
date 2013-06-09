@@ -1,33 +1,27 @@
-%flag {
-	@include rem(padding, $unit-quarter $unit-half);
-	@include border-radius;
-	background: $primary-color;
-	color: $white;	
-}
-
 // Bill List
 
 .bills-list .bill {
+	@include rem(padding, $unit-whole);
+	@extend %standard-border;
 	margin-bottom: 1em;
-	@include rem(padding, 1em);
-	border: 1px solid #DDDDDD;
 }
 
 // Summary
 
 .bill-summary {
-	float: left;
-	width: 70%;
 	h2, h3 {
 		font-family: $font-fancy;
 	}
 }
 
+.bill-categories {
+	@extend %margin-top;
+}
+
 // Status Indicators
 
 .bill-status {
-	text-align: right;
-	float: right;
+	@extend %margin-top;
 }
 
 .bill-status-indicators {
@@ -41,8 +35,7 @@
 	filter: alpha(opacity = 25);
 }
 .bill-status-indicators img.passed {
-	opacity: 1;
-	filter: alpha(opacity = 100);
+	@extend %opaque;
 }
 
 // Latest Action
@@ -56,36 +49,23 @@
 
 // Description
 
-.bill .description .ellipsis-ellipsis {
-	display: none;
-}
-.bill.is-expandable .description .ellipsis-ellipsis {
-	display: inline;
-}
-.bill.is-expandable.expanded .description .ellipsis-ellipsis {
-	display: none;
-}
-
+.bill .description .ellipsis-ellipsis,
+.bill.is-expandable.expanded .description .ellipsis-ellipsis,
 .bill.is-expandable .description .ellipsis-end {
 	display: none;
 }
-.bill.is-expandable.expanded .description .ellipsis-end {
-	display: inline;
-}
-
+.bill.is-expandable .description .ellipsis-ellipsis,
+.bill.is-expandable.expanded .description .ellipsis-end,
 .bill.is-expandable .description .ellipsis-start p {
 	display: inline;
 }
 .bill.is-expandable.expanded .description .ellipsis-start p {
 	display: block;
 }
-
-.bill .description .ellipsis-start p:last-child {
-	margin-bottom: 1em;
-}
 .bill.is-expandable .description .ellipsis-start p:last-child {
 	margin-bottom: 0;
 }
+.bill .description .ellipsis-start p:last-child,
 .bill.is-expandable.expanded .description .ellipsis-start p:last-child {
 	margin-bottom: 1em;
 }
@@ -116,9 +96,9 @@
 // Bottom
 
 .bill-bottom {
-	@include rem(margin-top, $unit-whole);
 	@include rem(padding-top, $unit-half);
-	border-top: 1px solid $primary-color;
+	@extend %margin-top;
+	border-top: $border-width $border-style $primary-color;
 }
 
 // News Links
@@ -159,10 +139,11 @@
 }
 
 .bill-auxiliary {
+	background: lighten($primary-color, 50);
 	@include rem(padding, $unit-whole);
 	float: right;
 	width: 28%;
-	background: lighten($primary-color, 50);
+	//background: lighten($primary-color, 50);
 }
 
 .bill-votes {
@@ -178,4 +159,18 @@
 	span {
 		@extend %flag;
 	}
+}
+
+@media screen and (min-width: 1024px) {
+
+	.bill-summary {
+		float: left;
+		width: 70%;
+	}
+
+	.bill-status {
+		text-align: right;
+		float: right;
+	}
+
 }
