@@ -160,7 +160,7 @@ __p += '\n\t\t\t\t\t<p>' +
 ((__t = ( _.ellipsisText(bill.description, 60) )) == null ? '' : __t) +
 '</p>\n\t\t\t\t';
  } ;
-__p += '\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="e-bill-categories">\n\t\t\t\t<strong>Categories:</strong>\n\t\t\t\t';
+__p += '\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="bill-categories">\n\t\t\t\t<strong>Categories:</strong>\n\t\t\t\t';
  _.each(bill.categories, function(c, i) { ;
 __p += '\n\t\t\t\t\t<a href="#/category/' +
 ((__t = ( c.get('id') )) == null ? '' : __t) +
@@ -505,21 +505,21 @@ __p += '\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t';
  } ;
 __p += '\n\n\t\t';
  if (_.isArray(bill.votes) && bill.votes.length > 0) { ;
-__p += '\n\t\t\t<div class="bill-votes">\n\t\t\t\t<h5>Votes</h5>\n\t\t\t\t\n\t\t\t\t<div>\n\t\t\t\t\t';
+__p += '\n\t\t\t<div class="bill-votes">\n\t\t\t\t<h5>Votes</h5>\n\t\t\t\t\t';
  _.each(bill.votes, function(v) { ;
-__p += '\n\t\t\t\t\t\t' +
+__p += '\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li>' +
 ((__t = ( v.date.format('MMM DD, YYYY') )) == null ? '' : __t) +
-':\n\t\t\t\t\t\t' +
+'</li>\n\t\t\t\t\t\t<li><strong>Motion:</strong> ' +
 ((__t = ( v.motion )) == null ? '' : __t) +
-' ' +
+'</li>\n\t\t\t\t\t\t<li><span>' +
 ((__t = ( (v.passed) ? 'passed' : 'failed' )) == null ? '' : __t) +
-':\n\t\t\t\t\t\t' +
+'</span> Y <span>' +
 ((__t = ( v.yes_count )) == null ? '' : __t) +
-' Y - \n\t\t\t\t\t\t' +
+'</span> N <span>' +
 ((__t = ( v.no_count )) == null ? '' : __t) +
-' N\n\t\t\t\t\t';
+'</span></li>\n\t\t\t\t\t</ul>\n\t\t\t\t\t';
  }) ;
-__p += '\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t';
+__p += '\n\t\t\t</div>\n\t\t';
  } ;
 __p += '\n\t\t\n\t\t<div class="bill-sources">\n\t\t\t<h5>Sources</h5>\n\t\t\t\n\t\t\t';
  var sourceCount = 0; ;
