@@ -195,7 +195,6 @@ table {
 %list-unstyled {
 	list-style: none;
 }
-
 %margin-top {
 	@include rem(margin-top, $unit-whole);
 }

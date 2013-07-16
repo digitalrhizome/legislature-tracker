@@ -378,36 +378,18 @@ table {
   background-color: transparent;
 }
 
-.hidden {
-  display: none !important;
-  visibility: hidden;
+.nav-categories {
+  border: 1px solid #eeeeee;
 }
 
-.visuallyhidden {
-  overflow: hidden;
-  position: absolute;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
-  position: static;
-  clip: auto;
-  height: auto;
-  width: auto;
-  margin: 0;
-  overflow: visible;
+.category-list .category-image:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
 
-.invisible {
-  visibility: hidden;
-}
-
-.list--unstyled {
-  list-style: none;
+.category-list .category-image {
+  opacity: .85;
+  filter: alpha(opacity=85);
 }
 
 body {
@@ -433,6 +415,7 @@ body {
 }
 
 .application-container {
+  width: 90%;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -472,14 +455,8 @@ body {
 .category-list .category-image {
   display: block;
   margin: 0 auto;
-  opacity: .85;
-  filter: alpha(opacity=85);
   zoom: 1;
   display: block;
-}
-.category-list .category-image:hover {
-  opacity: 1;
-  filter: alpha(opacity=100);
 }
 
 @media screen and (min-width: 600px) {
@@ -546,14 +523,22 @@ body {
 .nav-categories {
   margin-bottom: 32px;
   margin-bottom: 2rem;
-  background: #dafeff;
+  background: #fcfcfc;
 }
 .nav-categories a {
-  margin-right: 1em;
+  display: block;
+  padding-left: 16px;
+  padding-left: 1rem;
   line-height: 3em;
+  border-bottom: 1px solid #eeeeee;
 }
-.nav-categories a:first-of-type {
-  margin-left: 1em;
+.nav-categories a:last-of-type {
+  border-bottom: 0;
+}
+.nav-categories > a:first-of-type {
+  background: #dafeff;
+  border: 0;
+  font-weight: bold;
 }
 
 .category-container header .category-image {
@@ -561,4 +546,25 @@ body {
   margin-right: 16px;
   margin-right: 1rem;
   max-width: 50px;
+}
+
+@media screen and (min-width: 767px) {
+  .category-container {
+    float: right;
+    width: 68%;
+  }
+
+  .nav-categories {
+    float: left;
+    width: 28%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .category-container {
+    width: 78%;
+  }
+
+  .nav-categories {
+    width: 18%;
+  }
 }
