@@ -229,7 +229,7 @@ Currently, Tabletop.js extends Array so that indexOf is available.  This has som
 
 ## Attribution
 
-* Some icons provided by [The Noun Project](http://thenounproject.com/). Money by Lemon Liu, Justice by Márcio Duarte Gun by Yecvgeniy Osovets, Federal Government by Iconathon, Glasses by Kyle Scott, Flower by Edward Boatman, Umbrella by John Caserta, Car by Reuben Bowles, Worker by Bart Laugs, Pen by Marioh Tejeda.
+* Some icons provided by [The Noun Project](http://thenounproject.com/). Money by Lemon Liu, Justice by Márcio Duarte Gun by Yecvgeniy Osovets, Federal Government by Iconathon, Glasses by Kyle Scott, Flower by Edward Boatman, Umbrella by John Caserta, Car by Reuben Bowles, Worker by Bart Laugs, Pen by Marioh Tejeda, Warning by Lindley White.
 
 
 
