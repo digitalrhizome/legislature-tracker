@@ -229,4 +229,8 @@ Currently, Tabletop.js extends Array so that indexOf is available.  This has som
 
 ## Attribution
 
-* Some icons provided by [The Noun Project](http://thenounproject.com/).  Congress by Martha Ormiston; Energy by NDSTR; GayMarriage by MaurizioFusillo; Education by Thibault Geffroy; Time by Richard de Vos; Capital by Jonathan Keating; Paper by Tom Schott; Bank by Ilaria Baggio; Group by Alexandra Coscovelnita; Check mark by Spencer Cohen; Back by John Chapman.
+* Some icons provided by [The Noun Project](http://thenounproject.com/). Money by Lemon Liu, Justice by Márcio Duarte Gun by Yecvgeniy Osovets, Federal Government by Iconathon, Glasses by Kyle Scott, Flower by Edward Boatman, Umbrella by John Caserta, Car by Reuben Bowles, Worker by Bart Laugs, Pen by Marioh Tejeda.
+
+
+
+
