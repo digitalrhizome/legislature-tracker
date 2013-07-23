@@ -1,0 +1,11 @@
+Big ups to:
+
+Alan Palazzolo and his team at MinnPost for open sourcing their bill tracker, check him out at: https://github.com/zzolo
+
+Rob Davis for identifying a problem with accessibility of Florida Bills, finding MinnPost's Bill Tracker and connecting Cristina and Alan. Catch him on Twitter: @robdotd
+
+Rebekah Monson and Ernie Hsuing for putting on the National Day of Civic Hacking in Miami. Catch the one Twitter: @RebekahMonson and @ErnieAtLYD
+
+The Lab Miami for providing us with space to hack and collaborate. http://thelabmiami.com/
+
+and finally, me: Cristina Solana, Redesigned and implemented MinnPost's Bill Tracker for Florida. You can check me out at: cristinasolana.me
