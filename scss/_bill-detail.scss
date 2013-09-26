@@ -126,6 +126,10 @@
 	ul {
 		@include border-radius;
 		@extend %list-unstyled;
+		height: 100px;
+		overflow-y: scroll;
+		border: $border-width $border-style $border-color;
+		padding: 1rem;
 	}
 	li {
 		@include rem(margin-bottom, $unit-half);
