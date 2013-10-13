@@ -172,63 +172,50 @@ __p += ',';
  } ;
 __p += '\n\t\t\t\t';
  }) ;
-__p += '\n\t\t\t</div>\n\n\t\t</section>\n\n\t\t<aside class="bill-status">\n\t\t\t\n\t\t\t<div class="bill-status-indicators">\n\t\t\t\t<img class="lower ';
- if (bill.newest_action && Math.abs(parseInt(bill.newest_action.date.diff(moment(), 'days'))) < LT.options.recentChangeThreshold) { ;
-__p += 'passed';
- } ;
-__p += '" src="' +
+__p += '\n\t\t\t</div>\n\n\t\t</section>\n\n\t\t<aside class="bill-status">\n\t\t\t\n\t\t\t<div class="bill-status-indicators">\n\n\t\t\t\t<div class="indicator">\n\n\t\t\t\t\t<span>\n\t\t\t\t\t' +
+((__t = ( LT.utils.translate('chamber', 'lower') )) == null ? '' : __t) +
+'\n\t\t\t\t\t';
+ if (bill.actions && bill.actions.lower) { 
+						;
+__p += '<img class="lower" src="' +
 ((__t = ( LT.options.imagePath )) == null ? '' : __t) +
-'RecentChanges.png" title="';
- if (bill.newest_action && Math.abs(parseInt(bill.newest_action.date.diff(moment(), 'days'))) < LT.options.recentChangeThreshold) { ;
-__p += 'Recently changed';
+'bill-passed.png" title="Passed by ' +
+((__t = ( LT.utils.translate('chamber', 'lower') )) == null ? '' : __t) +
+'" />\n\t\t\t\t\t';
  } else { ;
-__p += 'Not recently changed';
- } ;
-__p += '" />\n\t\t\t\t\n\t\t\t\t<img class="lower ';
- if (bill.actions && bill.actions.lower) { ;
-__p += 'passed';
- } ;
-__p += '" src="' +
+__p += '\n\t\t\t\t\t\t<img class="lower" src="' +
 ((__t = ( LT.options.imagePath )) == null ? '' : __t) +
-'PassedHouse.png" title="';
- if (bill.actions && bill.actions.lower) { ;
-__p += 'Passed ' +
-((__t = ( LT.utils.translate('chamber', 'lower') )) == null ? '' : __t);
- } else { ;
-__p += 'Not passed ' +
-((__t = ( LT.utils.translate('chamber', 'lower') )) == null ? '' : __t);
+'bill-notPassed.png" title="Not Passed by ' +
+((__t = ( LT.utils.translate('chamber', 'lower') )) == null ? '' : __t) +
+'" />\n\t\t\t\t\t';
  } ;
-__p += '" />\n\t\t\t\t\n\t\t\t\t<img class="upper ';
+__p += '\n\t\t\t\t\t</span>\n\n\t\t\t\t\t<span>\n\t\t\t\t\t' +
+((__t = ( LT.utils.translate('chamber', 'upper') )) == null ? '' : __t) +
+'\n\t\t\t\t\t';
  if (bill.actions && bill.actions.upper) { ;
-__p += 'passed';
- } ;
-__p += '" src="' +
+__p += '\n\t\t\t\t\t\t<img class="upper" src="' +
 ((__t = ( LT.options.imagePath )) == null ? '' : __t) +
-'PassedSenate.png" title="';
- if (bill.actions && bill.actions.upper) { ;
-__p += 'Passed ' +
-((__t = ( LT.utils.translate('chamber', 'upper') )) == null ? '' : __t);
+'bill-passed.png" title="Passed by ' +
+((__t = ( LT.utils.translate('chamber', 'upper') )) == null ? '' : __t) +
+'" />\n\t\t\t\t\t';
  } else { ;
-__p += 'Not passed ' +
-((__t = ( LT.utils.translate('chamber', 'upper') )) == null ? '' : __t);
- } ;
-__p += '" />\n\t\t\t\t\n\t\t\t\t';
- if (LT.options.conferenceBill) { ;
-__p += '\n\t\t\t\t\t<img class="conference ';
- if (bill.bill_type && bill.bill_type.conference) { ;
-__p += 'passed';
- } ;
-__p += '" src="' +
+__p += '\n\t\t\t\t\t\t<img class="upper" src="' +
 ((__t = ( LT.options.imagePath )) == null ? '' : __t) +
-'InConferenceCommittee.png" title="';
- if (bill.bill_type && bill.bill_type.conference) { ;
-__p += 'Conference bill created';
+'bill-notPassed.png" title="Not Passed by ' +
+((__t = ( LT.utils.translate('chamber', 'upper') )) == null ? '' : __t) +
+'" />\n\t\t\t\t\t';
+ } ;
+__p += '\n\t\t\t\t\t</span>\n\n\t\t\t\t\t<span>\n\t\t\t\t\tSigned \n\t\t\t\t\t';
+ if (bill.actions && bill.actions.signed) { ;
+__p += '\n\t\t\t\t\t\t<img class="signed" src="' +
+((__t = ( LT.options.imagePath )) == null ? '' : __t) +
+'bill-passed.png" title="Signed into law by the Governor" />\n\t\t\t\t\t';
  } else { ;
-__p += 'Coinference bill not created';
+__p += '\n\t\t\t\t\t\t<img class="signed" src="' +
+((__t = ( LT.options.imagePath )) == null ? '' : __t) +
+'bill-notPassed.png" title="Not signed into law by the Governor" />\n\t\t\t\t\t';
  } ;
-__p += '" />\n\t\t\t\t';
- } ;
-__p += '\n\t\t\t\t\n\t\t\t\t<img class="signed ';
+__p += '\n\t\t\t\t\t</span>\n\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t<img class="signed ';
  if (bill.actions && bill.actions.signed) { ;
 __p += 'passed';
  } ;

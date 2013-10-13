@@ -39,17 +39,38 @@
 		<aside class="bill-status">
 			
 			<div class="bill-status-indicators">
-				<img class="lower <% if (bill.newest_action && Math.abs(parseInt(bill.newest_action.date.diff(moment(), 'days'))) < LT.options.recentChangeThreshold) { %>passed<% } %>" src="<%= LT.options.imagePath %>RecentChanges.png" title="<% if (bill.newest_action && Math.abs(parseInt(bill.newest_action.date.diff(moment(), 'days'))) < LT.options.recentChangeThreshold) { %>Recently changed<% } else { %>Not recently changed<% } %>" />
+
+				<div class="indicator">
+
+					<span>
+					<%= LT.utils.translate('chamber', 'lower') %>
+					<% if (bill.actions && bill.actions.lower) { 
+						%><img class="lower" src="<%= LT.options.imagePath %>bill-passed.png" title="Passed by <%= LT.utils.translate('chamber', 'lower') %>" />
+					<% } else { %>
+						<img class="lower" src="<%= LT.options.imagePath %>bill-notPassed.png" title="Not Passed by <%= LT.utils.translate('chamber', 'lower') %>" />
+					<% } %>
+					</span>
+
+					<span>
+					<%= LT.utils.translate('chamber', 'upper') %>
+					<% if (bill.actions && bill.actions.upper) { %>
+						<img class="upper" src="<%= LT.options.imagePath %>bill-passed.png" title="Passed by <%= LT.utils.translate('chamber', 'upper') %>" />
+					<% } else { %>
+						<img class="upper" src="<%= LT.options.imagePath %>bill-notPassed.png" title="Not Passed by <%= LT.utils.translate('chamber', 'upper') %>" />
+					<% } %>
+					</span>
+
+					<span>
+					Signed 
+					<% if (bill.actions && bill.actions.signed) { %>
+						<img class="signed" src="<%= LT.options.imagePath %>bill-passed.png" title="Signed into law by the Governor" />
+					<% } else { %>
+						<img class="signed" src="<%= LT.options.imagePath %>bill-notPassed.png" title="Not signed into law by the Governor" />
+					<% } %>
+					</span>
+
+				</div>
 				
-				<img class="lower <% if (bill.actions && bill.actions.lower) { %>passed<% } %>" src="<%= LT.options.imagePath %>PassedHouse.png" title="<% if (bill.actions && bill.actions.lower) { %>Passed <%= LT.utils.translate('chamber', 'lower') %><% } else { %>Not passed <%= LT.utils.translate('chamber', 'lower') %><% } %>" />
-				
-				<img class="upper <% if (bill.actions && bill.actions.upper) { %>passed<% } %>" src="<%= LT.options.imagePath %>PassedSenate.png" title="<% if (bill.actions && bill.actions.upper) { %>Passed <%= LT.utils.translate('chamber', 'upper') %><% } else { %>Not passed <%= LT.utils.translate('chamber', 'upper') %><% } %>" />
-				
-				<% if (LT.options.conferenceBill) { %>
-					<img class="conference <% if (bill.bill_type && bill.bill_type.conference) { %>passed<% } %>" src="<%= LT.options.imagePath %>InConferenceCommittee.png" title="<% if (bill.bill_type && bill.bill_type.conference) { %>Conference bill created<% } else { %>Coinference bill not created<% } %>" />
-				<% } %>
-				
-				<img class="signed <% if (bill.actions && bill.actions.signed) { %>passed<% } %>" src="<%= LT.options.imagePath %>SignedIntoLaw.png" title="<% if (bill.actions && bill.actions.signed) { %>Signed into law by the Governor<% } else { %>Not signed into law<% } %>" />
 			</div>
 			<% if (bill.newest_action) { %>
 				<div class="bill-latest-action">

@@ -295,7 +295,7 @@ table {
 .nav-categories, .bills-list .bill {
   border: 1px solid #eeeeee; }
 
-.category-list .category-image:hover, .bill-status-indicators img.passed {
+.category-list .category-image:hover {
   opacity: 1;
   filter: alpha(opacity=100); }
 
@@ -303,7 +303,7 @@ table {
   opacity: .85;
   filter: alpha(opacity=85); }
 
-.bill-action-date, .bill-votes span {
+.indicator, .bill-action-date, .bill-votes span {
   padding: 0.25rem 0.5rem;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -454,9 +454,7 @@ table {
 
 .bill-status-indicators img {
   max-height: 2em;
-  margin-left: .5em;
-  opacity: .25;
-  filter: alpha(opacity=25); }
+  margin: 0 .5em; }
 
 .bill .description .ellipsis-ellipsis,
 .bill.is-expandable.expanded .description .ellipsis-ellipsis,
@@ -521,6 +519,14 @@ table {
     padding: 1rem; }
   .bill-actions li {
     margin-bottom: 0.5rem; }
+
+.indicator {
+  margin-left: 0.5rem;
+  display: inline-block; }
+
+.bill-passed {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1; }
 
 .bill-action-date {
   margin-right: 1rem;
