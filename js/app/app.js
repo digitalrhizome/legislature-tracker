@@ -230,7 +230,7 @@
           });
         });
   
-        var url = 'http://openstates.org/api/v1/bills/?state=' + LT.options.state +
+        var url = 'https://openstates.org/api/v1/bills/?state=' + LT.options.state +
           '&search_window=session:' + LT.options.session +
           '&bill_id__in=' + encodeURI(billIDs.join('|')) +
           '&apikey=' + LT.options.OSKey + '&callback=?';
