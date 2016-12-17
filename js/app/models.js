@@ -9,7 +9,7 @@
    */
   LT.OSModel = Backbone.Model.extend({
     urlBase: function() {
-      return 'http://openstates.org/api/v1/';
+      return 'https://openstates.org/api/v1/';
     },
     
     urlEnd: function() {
